@@ -6,16 +6,32 @@ using System.Threading.Tasks;
 using Entidad;
 using DAO;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Negocio
 {
     public class NEGUsuarios
     {
-        public DataTable GetTable()
+        DAOUsuarios dao = new DAOUsuarios();
+        /*public DataTable GetTable()
         {
             DAOUsuarios dao = new DAOUsuarios();
             return dao.getTablaUsuarios();
-        }
+        }*/
+
+         public string GetMD5(string str)
+         {
+             MD5 md5 = MD5CryptoServiceProvider.Create();
+             ASCIIEncoding encoding = new ASCIIEncoding();
+             byte[] stream = null;
+             StringBuilder sb = new StringBuilder();
+             stream = md5.ComputeHash(encoding.GetBytes(str));
+             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+             return sb.ToString();
+         }
+        
+
         public bool ActualizarUsuario( string nombre, string apellido, string clave, string fecha, string causa)
         {
             Usuarios us = new Usuarios();
@@ -32,25 +48,19 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarUsuario(string nombre, string fecha, string causa)
+        public void AgregarUsuario(Usuarios user)
         {
-            Usuarios us = new Usuarios();
-            DAOUsuarios dao = new DAOUsuarios();
-            us.Nombre = nombre;
-            us.FechaBaja = fecha;
-            us.CausaBaja = causa;
-            int op = dao.Insertar(us);
-            if (op == 1)
-                return true;
-            else
-                return false;
-
+           dao.Insertar(user);
         }
-        public Usuarios GetUsuarioPass(string usuario)
+        public Usuarios login(String userName, String password)
+        {
+            return dao.getusuario(userName,password);
+        }
+        /*public Usuarios GetUsuarioPass(string usuario)
         {
             DAOUsuarios dao = new DAOUsuarios();
             return dao.getusuario(usuario);
-        }
+        }*/
         
     }
 }

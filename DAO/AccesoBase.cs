@@ -49,7 +49,6 @@ namespace DAO
             Conexion.Close();
             return ds.Tables[NombreTabla];
         }
-
         public int EjecutarProcedimientoAlmacenado(NpgsqlCommand Comando, String NombreSP)
         {
             int FilasCambiadas;
