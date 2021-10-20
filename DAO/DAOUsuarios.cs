@@ -23,7 +23,9 @@ namespace DAO
             try
             {
                 DataRow tblUsuarios = ds.ObtenerTabla(nombreTabla, consulta).Rows[0];
-                user.Usuario = tblUsuarios["Nombre"].ToString();
+                user.Usuario = tblUsuarios["Usuario"].ToString();
+                user.Apellido = tblUsuarios["Apellido"].ToString();
+                user.Nombre = tblUsuarios["Nombre"].ToString();
                 user.Clave = tblUsuarios["Clave"].ToString();
                 return user;
             }

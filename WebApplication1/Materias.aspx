@@ -20,6 +20,10 @@
             <p>
             <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
             </p>
+            <p style="margin-left: 920px">
+            Usuario:
+            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+            </p>
             <div class="auto-style1">
             Materias</div>
             <br />

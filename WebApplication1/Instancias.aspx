@@ -11,7 +11,13 @@
     <form id="form1" runat="server">
         <div>
             <div class="auto-style1">
-            Instancias</div>
+            <asp:Button ID="btnVolver0" runat="server" OnClick="btnVolver_Click" style="text-align: left" Text="Volver" />
+            <p style="margin-left: 920px">
+            Usuario:
+            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+            </p>
+                <br />
+            Instancias&nbsp;&nbsp;&nbsp; </div>
             <br />
             <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
             <br />

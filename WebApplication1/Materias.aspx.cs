@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidad;
 
 namespace WebApplication1
 {
@@ -12,6 +13,15 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuarios usuario = (Usuarios)Session["Usuario"];
+
+            if (usuario == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            lblNombreUsuario.Text = usuario.Usuario;
+
             if (!IsPostBack)
             {
                 CargarTabla();
@@ -69,6 +79,10 @@ namespace WebApplication1
             NegMat.ActualizarTabla (l1.Text, t1.Text, t2.Text, t3.Text);
             gv.EditIndex = -1;
             CargarTabla();
+        }
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inicio.aspx");
         }
     }
 }

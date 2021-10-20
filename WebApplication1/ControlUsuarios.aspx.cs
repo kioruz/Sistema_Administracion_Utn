@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidad;
 
 namespace WebApplication1
 {
@@ -13,7 +14,17 @@ namespace WebApplication1
         NEGUsuarios usuario = new NEGUsuarios();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarTabla();
+            if (!IsPostBack)
+            {
+                Usuarios usuario = (Usuarios)Session["Usuario"];
+                if (usuario == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+
+                lblNombreUsuario.Text = usuario.Usuario;
+                CargarTabla();
+            }
         }
         public void CargarTabla()
         {

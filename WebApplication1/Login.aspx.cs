@@ -34,7 +34,7 @@ namespace WebApplication1
                 }
                 else
                 {
-                    Session["usuario"] = user;
+                    Session["Usuario"] = user;
                     Response.Redirect("Inicio.aspx");
                 }
             }
