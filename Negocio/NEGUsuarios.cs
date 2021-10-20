@@ -52,15 +52,13 @@ namespace Negocio
         {
            dao.Insertar(user);
         }
+        public DataTable TablaUsuarios()
+        {
+            return dao.getTablaUsuarios();
+        }
         public Usuarios login(String userName, String password)
         {
             return dao.getusuario(userName,password);
         }
-        /*public Usuarios GetUsuarioPass(string usuario)
-        {
-            DAOUsuarios dao = new DAOUsuarios();
-            return dao.getusuario(usuario);
-        }*/
-        
     }
 }

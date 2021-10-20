@@ -17,12 +17,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <p>
+            <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
+            </p>
             <div class="auto-style1">
             Materias</div>
-
-            
             <br />
-            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" ShowFooter="True" OnSelectedIndexChanged="gv_SelectedIndexChanged" AllowSorting="True">
+            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" ShowFooter="True" AllowSorting="True">
                 <Columns>
                     <asp:TemplateField HeaderText="Controles">
 
@@ -106,6 +107,7 @@
             <br />
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InicioB.aspx">Volver</asp:HyperLink>
         </div>
+        
     </form>
 </body>
 </html>

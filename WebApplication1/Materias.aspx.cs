@@ -70,29 +70,5 @@ namespace WebApplication1
             gv.EditIndex = -1;
             CargarTabla();
         }
-        protected void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnQuitarFiltro_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void gv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

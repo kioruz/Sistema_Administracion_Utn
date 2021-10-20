@@ -35,7 +35,7 @@ namespace DAO
         public DataTable getTablaUsuarios()
         {
             List<Usuarios> lista = new List<Usuarios>();
-            DataTable tabla = ds.ObtenerTabla("USUARIOS", "select * from USUARIOS");
+            DataTable tabla = ds.ObtenerTabla("\"USUARIOS\"", "select * from \"USUARIOS\"");
             return tabla;
         }
         public int Insertar(Usuarios user)
