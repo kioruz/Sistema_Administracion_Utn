@@ -20,7 +20,7 @@ namespace Negocio
         }
         public bool ActualizarTabla(string id, string nombre, string fecha, string causa)
         {
-            Turnos tn = new Turnos(int.Parse(id), nombre, fecha, causa);
+            Turnos tn = new Turnos(id, nombre, fecha, causa);
             DAOTurnos dao = new DAOTurnos();
             int op = dao.Actualizar(tn);
             if (op == 1)
@@ -29,10 +29,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarTurno(string nombre, string fecha, string causa)
+        public bool AgregarTurno(string id, string nombre, string fecha, string causa)
         {
             Turnos tn = new Turnos();
             DAOTurnos dao = new DAOTurnos();
+            tn.Id = id;
             tn.Nombre = nombre;
             tn.FechaBaja = fecha;
             tn.CausaBaja = causa;

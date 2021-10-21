@@ -11,7 +11,7 @@ namespace WebApplication1
 {
     public partial class Turnos : System.Web.UI.Page
     {
-        NEGTturnos turnoNEG = new NEGTurnos();
+        NEGTurnos turnoNEG = new NEGTurnos();
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuarios usuario = (Usuarios)Session["Usuario"];
@@ -58,11 +58,7 @@ namespace WebApplication1
                 TextBox txtFecha = (TextBox)gv.FooterRow.FindControl("txtFecha");
                 TextBox txtCausa = (TextBox)gv.FooterRow.FindControl("txtCausabaja");
 
-
-
-                string s = turnoNEG.AgregarTurno(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
-
-                Label1.Text = s;
+                turnoNEG.AgregarTurno(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
 
                 CargarTabla();
             }

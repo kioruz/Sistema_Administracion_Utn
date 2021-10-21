@@ -58,11 +58,7 @@ namespace WebApplication1
                 TextBox txtFecha = (TextBox)gv.FooterRow.FindControl("txtFecha");
                 TextBox txtCausa = (TextBox)gv.FooterRow.FindControl("txtCausabaja");
 
-
-
-                string s = tpNEG.AgregarTipoCarrera(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
-
-                Label1.Text = s;
+                tpNEG.AgregarTipoCarrera(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
 
                 CargarTabla();
             }

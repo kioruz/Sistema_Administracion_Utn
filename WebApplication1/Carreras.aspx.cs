@@ -31,8 +31,8 @@ namespace WebApplication1
 
         public void CargarTabla()
         {
-            gv.DataSource = Carrera.GetTable();
-            gv.DataBind();
+            gvCarreras.DataSource = Carrera.GetTable();
+            gvCarreras.DataBind();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {

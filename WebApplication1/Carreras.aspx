@@ -19,7 +19,7 @@
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
             </p>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+        <asp:GridView ID="gvCarreras" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
             <Columns>
                 <asp:TemplateField HeaderText="IDCarrera">
                     <ItemTemplate>

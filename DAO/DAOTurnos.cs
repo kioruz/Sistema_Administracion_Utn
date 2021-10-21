@@ -19,7 +19,7 @@ namespace DAO
     {
         Turnos tn = new Turnos();
         DataTable tabla = ds.ObtenerTabla("TURNOS", "select * from \"TURNOS\" where \"Id\" like " + "'" + idTurnos + "'");
-        tn.Id = int.Parse(idTurnos);
+        tn.Id = idTurnos;
         tn.Nombre = tabla.Rows[0][1].ToString();
         tn.FechaBaja = tabla.Rows[0][2].ToString();
         tn.CausaBaja = tabla.Rows[0][3].ToString();

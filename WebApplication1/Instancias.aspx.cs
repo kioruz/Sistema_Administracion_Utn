@@ -92,5 +92,15 @@ namespace WebApplication1
         {
             Response.Redirect("Inicio.aspx");
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

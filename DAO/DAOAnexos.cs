@@ -19,7 +19,7 @@ namespace DAO
         {
             Anexos an = new Anexos();
             DataTable tabla = ds.ObtenerTabla("ANEXOS", "select * from \"ANEXOS\" where \"Id\" like " + "'"+IdAnexo+"'");
-            an.Id = int.Parse( IdAnexo);
+            an.Id = IdAnexo;
             an.Nombre = tabla.Rows[0][1].ToString();
             an.FechaBaja = tabla.Rows[0][2].ToString();
             an.CausaBaja = tabla.Rows[0][3].ToString();

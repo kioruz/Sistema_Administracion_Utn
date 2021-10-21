@@ -19,7 +19,7 @@ namespace DAO
         {
             Modalidades mod = new Modalidades();
             DataTable tabla = ds.ObtenerTabla("MODALIDADES", "select * from \"MODALIDADES\" where \"Id\" like " + "'" + idModalidades + "'");
-            mod.Id = int.Parse(idModalidades);
+            mod.Id = idModalidades;
             mod.Nombre = tabla.Rows[0][1].ToString();
             mod.FechaBaja = tabla.Rows[0][2].ToString();
             mod.CausaBaja = tabla.Rows[0][3].ToString();

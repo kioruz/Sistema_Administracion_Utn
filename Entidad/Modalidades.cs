@@ -9,12 +9,12 @@ namespace Entidad
     public class Modalidades
     {
         //Attributes
-        private int id;
+        private String id;
         private String nombre;
         private String fechaBaja;
         private String causaBaja;
         //Constructors
-        public Modalidades(int id, string nombre, string fechaBaja, string causaBaja)
+        public Modalidades(string id, string nombre, string fechaBaja, string causaBaja)
         {
             this.Id = id;
             this.Nombre = nombre;
@@ -24,7 +24,7 @@ namespace Entidad
 
         public Modalidades() { }
         //Getters and Setters
-        public int Id { get => id; set => id = value; }
+        public string Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string FechaBaja { get => fechaBaja; set => fechaBaja = value; }
         public string CausaBaja { get => causaBaja; set => causaBaja = value; }

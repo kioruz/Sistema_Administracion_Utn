@@ -19,7 +19,7 @@ namespace Negocio
         }
         public bool ActualizarTabla(string id, string nombre, string fecha, string causa)
         {
-            Inscripciones ins = new Inscripciones(int.Parse(id), nombre, fecha, causa);
+            Inscripciones ins = new Inscripciones(id, nombre, fecha, causa);
             DAOInscripciones dao = new DAOInscripciones();
             int op = dao.Actualizar(ins);
             if (op == 1)
@@ -28,10 +28,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarInscripcion(string nombre, string fecha, string causa)
+        public bool AgregarInscripcion(string id, string nombre, string fecha, string causa)
         {
             Inscripciones ins = new Inscripciones();
             DAOInscripciones dao = new DAOInscripciones();
+            ins.Id = id;
             ins.Nombre = nombre;
             ins.FechaBaja = fecha;
             ins.CausaBaja = causa;

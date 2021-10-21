@@ -9,7 +9,7 @@ namespace Entidad
     public class Carreras
     {
         //Attributes
-        private int id;
+        private String id;
         private int inscripciones_Id;
         private int tipos_Carreras_Id;
         private String nombre;
@@ -19,7 +19,7 @@ namespace Entidad
         private String fechaBaja;
         private String causaBaja;
         //Constructors
-        public Carreras(int id, int inscripciones_Id, int tipos_Carreras_Id, string nombre, string codigoInterno, int idTipoCarrera, int idInscripcion, string fechaBaja, string causaBaja)
+        public Carreras(string id, int inscripciones_Id, int tipos_Carreras_Id, string nombre, string codigoInterno, int idTipoCarrera, int idInscripcion, string fechaBaja, string causaBaja)
         {
             this.Id = id;
             this.Inscripciones_Id = inscripciones_Id;
@@ -35,7 +35,7 @@ namespace Entidad
         public Carreras() { }
 
         //Getters and Setters
-        public int Id { get => id; set => id = value; }
+        public string Id { get => id; set => id = value; }
         public int Inscripciones_Id { get => inscripciones_Id; set => inscripciones_Id = value; }
         public int Tipos_Carreras_Id { get => tipos_Carreras_Id; set => tipos_Carreras_Id = value; }
         public string Nombre { get => nombre; set => nombre = value; }

@@ -19,7 +19,7 @@ namespace DAO
         {
             Carreras ca = new Carreras();
             DataTable tabla = ds.ObtenerTabla("CARRERAS", "select * from \"CARRERAS\" where \"Id\" like " + "'"+IdCarrera+"'");
-            ca.Id = int.Parse(IdCarrera);
+            ca.Id = IdCarrera;
             ca.IdInscripcion = int.Parse( tabla.Rows[0][1].ToString());
             ca.Tipos_Carreras_Id = int.Parse(tabla.Rows[0][2].ToString());
             ca.Nombre = tabla.Rows[0][3].ToString();

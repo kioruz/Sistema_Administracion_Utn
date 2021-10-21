@@ -20,7 +20,7 @@ namespace DAO
     {
         Tipos_Carreras tc = new Tipos_Carreras();
         DataTable tabla = ds.ObtenerTabla("TIPOS_CARRERAS", "select * from \"TIPOS_CARRERAS\" where \"Id\" like " + "'" + idTipo_Carreras + "'");
-        tc.Id = int.Parse(idTipo_Carreras);
+        tc.Id = idTipo_Carreras;
         tc.Nombre = tabla.Rows[0][1].ToString();
         tc.FechaBaja = tabla.Rows[0][2].ToString();
         tc.CausaBaja = tabla.Rows[0][3].ToString();
