@@ -29,7 +29,7 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarAnexo(string nombre, string fecha, string causa)
+        public bool AgregarModalidad(string nombre, string fecha, string causa)
         {
             Modalidades mod = new Modalidades();
             DAOModalidad dao = new DAOModalidad();

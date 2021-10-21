@@ -29,7 +29,7 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarAnexo(string nombre, string fecha, string causa)
+        public bool AgregarTipoCarrera(string nombre, string fecha, string causa)
         {
             Tipos_Carreras car = new Tipos_Carreras();
             DAOTipos_Carreras dao = new DAOTipos_Carreras();

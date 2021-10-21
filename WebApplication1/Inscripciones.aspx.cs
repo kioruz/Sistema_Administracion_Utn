@@ -21,10 +21,70 @@ namespace WebApplication1
             }
 
             lblNombreUsuario.Text = usuario.Usuario;
+
+            if (!IsPostBack)
+            {
+                CargarTabla();
+            }
+        }
+
+        public void CargarTabla()
+        {
+            NEGInscripciones insc = new NEGInscripciones();
+            gv.DataSource = insc.GetTable();
+            gv.DataBind();
+        }
+
+        protected void gv_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gv.EditIndex = -1;
+            CargarTabla();
+        }
+
+        protected void gv_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gv.EditIndex = e.NewEditIndex;
+            CargarTabla();
+        }
+
+        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("AddNew"))
+            {
+                NEGInscripciones inscNeg = new NEGInscripciones();
+                TextBox txtID = (TextBox)gv.FooterRow.FindControl("txtId");
+                TextBox txtNomb = (TextBox)gv.FooterRow.FindControl("txtnombre");
+                TextBox txtFecha = (TextBox)gv.FooterRow.FindControl("txtFecha");
+                TextBox txtCausa = (TextBox)gv.FooterRow.FindControl("txtCausabaja");
+
+
+
+                string s = inscNeg.AgregarInscripcion(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
+
+                Label1.Text = s;
+
+                CargarTabla();
+            }
+        }
+        protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            NEGInscripciones NegInc = new NEGInscripciones();
+            Inscripciones Inscripcion = new Inscripciones();
+            Label l1 = gv.Rows[e.RowIndex].FindControl("lblid") as Label;
+            TextBox t1 = gv.Rows[e.RowIndex].FindControl("txtNombre") as TextBox;
+            TextBox t2 = gv.Rows[e.RowIndex].FindControl("txtFecha") as TextBox;
+            TextBox t3 = gv.Rows[e.RowIndex].FindControl("txtCausabaja") as TextBox;
+
+
+            NegInc.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text);
+            gv.EditIndex = -1;
+            CargarTabla();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx");
         }
+
+    
     }
 }

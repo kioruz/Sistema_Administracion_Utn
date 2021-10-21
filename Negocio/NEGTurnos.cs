@@ -29,7 +29,7 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarAnexo(string nombre, string fecha, string causa)
+        public bool AgregarTurno(string nombre, string fecha, string causa)
         {
             Turnos tn = new Turnos();
             DAOTurnos dao = new DAOTurnos();

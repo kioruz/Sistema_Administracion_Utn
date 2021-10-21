@@ -28,7 +28,7 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarAnexo(string nombre, string fecha, string causa)
+        public bool AgregarInscripcion(string nombre, string fecha, string causa)
         {
             Inscripciones ins = new Inscripciones();
             DAOInscripciones dao = new DAOInscripciones();

@@ -11,6 +11,7 @@ namespace WebApplication1
 {
     public partial class Carreras : System.Web.UI.Page
     {
+        NEGCarreras Carrera = new NEGCarreras();
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuarios usuario = (Usuarios)Session["Usuario"];
@@ -21,10 +22,24 @@ namespace WebApplication1
             }
 
             lblNombreUsuario.Text = usuario.Usuario;
+
+            if (!IsPostBack)
+            {
+                CargarTabla();
+            }
+        }
+
+        public void CargarTabla()
+        {
+            gv.DataSource = Carrera.GetTable();
+            gv.DataBind();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx");
         }
+
+
+
     }
 }
