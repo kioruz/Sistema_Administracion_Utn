@@ -35,58 +35,21 @@ namespace DAO
         }
         public int  Insertar(Anexos an)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_Anexos(:na, :f, :cb )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_ANEXOS(:na, :f, :cb )");
             com.Parameters.Add("na", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
             com.Parameters.Add("f", NpgsqlDbType.Date).Value = DateTime.Parse(an.FechaBaja).Date;
             com.Parameters.AddWithValue("cb", NpgsqlDbType.Text).Value = an.CausaBaja.Trim();
             return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Anexos");
 
         }
-        /*Create or replace procedure pdinsertaranexos (na character varying ,
-                                               f date,
-                                               cb text)
-             as 
-             $$
-                 begin
-                     insert into "ANEXOS" ("Nombre", "Fechabaja",
-                                 "Causabaja")
-                     values(p_nombre,p_fecha,
-                            p_causa);
-                     end;
-             $$
-             language plpgsql;*/
         public int Actualizar(Anexos an)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdupdateanexos(:p_id, :p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_ANEXOS(:p_id, :p_nombre, :p_fecha, :p_causa )");
             com.Parameters.AddWithValue("p_id", DbType.Int32).Value = an.Id;
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(an.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = an.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com,"");
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_ANEXOS");
         }
-        /*create or replace procedure pdupdateanexos(p_id integer,
-                                               p_nombre character varying,
-                                               p_fecha date,
-                                               p_causa text)
-        as
-        $$
-	        begin
-                update "ANEXOS" set "Nombre" = p_nombre,  
-					                    "Fechabaja" = p_fecha, "Causabaja" = p_causa
-                                        where "Id" = p_id;		
-            end;
-        $$
-        language plpgsql;*/
-
-        /*Create or replace procedure PDBajaAnexos (p_fecha DATE ,
-										 p_causa TEXT,
-										 p_id integer)
-            as 
-            $$
-	            begin
-		            update "ANEXOS" set "Fechabaja" = p_fecha , "Causabaja"=p_causa where Id = p_id;
-		            end;
-            $$
-            language plpgsql;*/
     }
 }

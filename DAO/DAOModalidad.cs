@@ -36,54 +36,23 @@ namespace DAO
         }
         public int Insertar(Modalidades mod)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_Modalidades(:p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_MODALIDADES(:p_nombre, :p_fecha, :p_causa )");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mod.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mod.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mod.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Modalidades");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_MODALIDADES");
 
         }
-       
-        /*Create or replace procedure pdinsertarmodalidades (p_nombre character varying ,
-											  p_fecha date,
-											  p_causa text)
-            as 
-            $$
-	            begin
-		            insert into "MODALIDADES" ("Nombre", "Fechabaja",
-					            "Causabaja")
-		            values(p_nombre,p_fecha,
-			               p_causa);
-		            end;
-            $$
-            language plpgsql;*/
-
-
 
         public int Actualizar(Modalidades mod)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call PDUpdateModalidades(:p_id, :p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_MODALIDADES(:p_id, :p_nombre, :p_fecha, :p_causa )");
             com.Parameters.AddWithValue("p_id", DbType.Int32).Value = mod.Id;
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mod.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mod.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mod.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com,"");
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_MODALIDADES");
         }
-
-       
-        /*create or replace procedure PDUpdateModalidades(p_id integer,
-											   p_nombre character varying,
-											   p_fecha date,
-											   p_causa text)
-        as
-        $$
-	        begin
-		        update "MODALIDADES" set "Nombre" = p_nombre,  
-					                    "Fechabaja" = p_fecha, "Causabaja" = p_causa 
-										where "Id" = p_id;		
-            end;
-        $$
-        language plpgsql;*/
     }
 }
 

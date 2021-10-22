@@ -41,7 +41,7 @@ namespace DAO
         }
         public int Insertar(Instancias ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_Instancia(:p_incripcion_id, :p_nombre, :p_idinscripcion, :p_anio," +
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_INSTANCIAS(:p_incripcion_id, :p_nombre, :p_idinscripcion, :p_anio," +
                                                     ":p_nroInscripcion, :p_estado, :p_fechainicio ,:p_fechafin )");
             com.Parameters.AddWithValue("p_incripcion_id", DbType.Int32).Value = ins.Inscripciones_Id;
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
@@ -54,39 +54,13 @@ namespace DAO
 
             com.Parameters.AddWithValue("p_fechainicio", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaInicio).Date;
             com.Parameters.AddWithValue("p_fechafin", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaFin).Date;
-            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Instancia");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_INSTANCIAS");
 
         }
 
-        /*Create or replace procedure pdinsertarinstancia (
-												p_incripcion_id integer,
-											   p_nombre character varying,
-											   p_idinscripcion integer,
-											   p_anio smallint,
-											   p_nroInscripcion integer,
-												p_estado character varying,
-											   p_fechainicio date,
-												 p_fechafin date
-											   )
-            as 
-            $$
-	            begin
-		            insert into "INSTANCIAS" ("INSCRIPCIONES_Id",
-					            "Nombre", "Idinscripcion", "Idinscripcion", "Nroinscripcion",
-					            "Estado", "Fechainicio","Fechafin")
-		            values(p_incripcion_id,p_nombre,
-			               p_idinscripcion,p_anio,
-			               p_nroInscripcion,p_estado,
-			               p_fechainicio,p_fechafin);
-		            end;
-            $$
-            language plpgsql;*/
-
-
-
         public int Actualizar(Instancias ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdupdateinstancias(:p_id ,:p_incripcion_id, :p_nombre, :p_idinscripcion, :p_anio," +
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_INSTANCIAS(:p_id ,:p_incripcion_id, :p_nombre, :p_idinscripcion, :p_anio," +
                                                     ":p_nroInscripcion, :p_estado, :p_fechainicio ,:p_fechafin )");
             com.Parameters.AddWithValue("p_id", DbType.Int32).Value = ins.Id;
             com.Parameters.AddWithValue("p_incripcion_id", DbType.Int32).Value = ins.Inscripciones_Id;
@@ -100,30 +74,8 @@ namespace DAO
 
             com.Parameters.Add("p_fechainicio", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaInicio).Date;
             com.Parameters.Add("p_fechafin", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaFin).Date;
-            return ds.EjecutarProcedimientoAlmacenado(com,"");
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_INSTANCIAS");
         }
-
-
-        /*create or replace procedure pdupdateinstancias(
-												p_id integer,
-											   p_incripcion_id integer,
-											   p_nombre character varying,
-											   p_idinscripcion integer,
-											   p_anio smallint,
-											   p_nroInscripcion integer,
-												p_estado character varying,
-											   p_fechainicio date,
-												 p_fechafin date)
-        as
-        $$
-	        begin
-		        update "INSTANCIAS" set "INSCRIPCIONES_Id" = p_incripcion_id, "Nombre" = p_nombre,
-					                    "Idinscripcion" = p_idinscripcion, "Anio" = p_anio, "Nroinscripcion" = p_nroInscripcion, 
-										"Estado" = p_estado,
-					                    "Fechainicio" = p_fechainicio, "Fechafin" = p_fechafin where "Id" = p_id;
-            end;
-        $$
-        language plpgsql;*/
     }
 }
 

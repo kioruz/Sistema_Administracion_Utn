@@ -35,15 +35,15 @@ namespace DAO
         }
         public int Insertar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_Inscripcion(:p_nombre, :tabla)");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_INSCRIPCION(:p_nombre, :tabla)");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
             com.Parameters.Add("tabla", NpgsqlDbType.Varchar, 255).Value = "\"Inscripciones\"";
-            return ds.EjecutarProcedimientoAlmacenado(com,"insertar_Inscripcion");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_INSCRIPCION");
         }
 
         public int Actualizar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call actualizar_Tabla(:p_id, :p_nombre, :p_fecha, :p_causa, :tabla)");
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_INSCRIPCION(:p_id, :p_nombre, :p_fecha, :p_causa, :tabla)");
             
             com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
@@ -67,7 +67,7 @@ namespace DAO
                 com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
             }
 
-            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_Inscripciones");
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_INSCRIPCION");
         }
     }
 }
