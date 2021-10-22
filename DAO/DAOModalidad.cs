@@ -36,11 +36,11 @@ namespace DAO
         }
         public int Insertar(Modalidades mod)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertarmodalidades(:p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_Modalidades(:p_nombre, :p_fecha, :p_causa )");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mod.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mod.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mod.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertarmodalidades");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Modalidades");
 
         }
        
@@ -67,7 +67,7 @@ namespace DAO
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mod.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mod.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mod.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDUpdateModalidades");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
 
        

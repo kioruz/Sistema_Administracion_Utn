@@ -83,7 +83,6 @@ namespace WebApplication1
             TextBox t7 = gv.Rows[e.RowIndex].FindControl("txtFechainicio") as TextBox;
             TextBox t8 = gv.Rows[e.RowIndex].FindControl("txtFechafin") as TextBox;
           
-
             negins.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text, int.Parse(t4.Text), t5.Text, t6.Text, t7.Text, t8.Text);
             gv.EditIndex = -1;
             CargarTabla();

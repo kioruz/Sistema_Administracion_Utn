@@ -35,11 +35,11 @@ namespace DAO
         }
         public int  Insertar(Anexos an)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertaranexos(:na, :f, :cb )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_Anexos(:na, :f, :cb )");
             com.Parameters.Add("na", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
             com.Parameters.Add("f", NpgsqlDbType.Date).Value = DateTime.Parse(an.FechaBaja).Date;
             com.Parameters.AddWithValue("cb", NpgsqlDbType.Text).Value = an.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertaranexos");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Anexos");
 
         }
         /*Create or replace procedure pdinsertaranexos (na character varying ,
@@ -62,7 +62,7 @@ namespace DAO
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(an.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = an.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdupdateanexos");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
         /*create or replace procedure pdupdateanexos(p_id integer,
                                                p_nombre character varying,

@@ -28,14 +28,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarInscripcion(string id, string nombre, string fecha, string causa)
+        public bool AgregarInscripcion(string nombre)
         {
             Inscripciones ins = new Inscripciones();
             DAOInscripciones dao = new DAOInscripciones();
-            ins.Id = id;
             ins.Nombre = nombre;
-            ins.FechaBaja = fecha;
-            ins.CausaBaja = causa;
             int op = dao.Insertar(ins);
             if (op == 1)
                 return true;

@@ -13,6 +13,8 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
             Usuarios usuario = (Usuarios)Session["Usuario"];
 
             if (usuario == null)
@@ -46,22 +48,6 @@ namespace WebApplication1
             gv.EditIndex = e.NewEditIndex;
             CargarTabla();
         }
-
-        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("AddNew"))
-            {
-                NEGInscripciones inscNeg = new NEGInscripciones();
-                TextBox txtID = (TextBox)gv.FooterRow.FindControl("txtId");
-                TextBox txtNomb = (TextBox)gv.FooterRow.FindControl("txtnombre");
-                TextBox txtFecha = (TextBox)gv.FooterRow.FindControl("txtFecha");
-                TextBox txtCausa = (TextBox)gv.FooterRow.FindControl("txtCausabaja");
-
-                inscNeg.AgregarInscripcion(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
-
-                CargarTabla();
-            }
-        }
         protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             NEGInscripciones NegInc = new NEGInscripciones();
@@ -81,6 +67,13 @@ namespace WebApplication1
             Response.Redirect("Inicio.aspx");
         }
 
-    
+        protected void btn_aceptar_Click(object sender, EventArgs e)
+        {
+            NEGInscripciones inscNeg = new NEGInscripciones();
+
+            inscNeg.AgregarInscripcion(tbxNombre.Text);
+
+            CargarTabla();
+        }
     }
 }

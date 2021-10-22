@@ -37,12 +37,12 @@ namespace DAO
         }
         public int Insertar(Materias mat)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertarmaterias(:p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_Materias(:p_nombre, :p_fecha, :p_causa )");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mat.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mat.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mat.CausaBaja.Trim();
 
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertarmaterias");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Materias");
 
         }
         
@@ -69,7 +69,7 @@ namespace DAO
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mat.Nombre;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mat.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mat.CausaBaja.Trim();        
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdupdatematerias");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
 
        

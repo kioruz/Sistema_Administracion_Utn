@@ -40,7 +40,7 @@ namespace DAO
         }
         public int Insertar(Carreras ca)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertarcarrera(:p_incripcion_id, :p_tipo_car_id, :p_nombre, :p_codigoint," +
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_Carrera(:p_incripcion_id, :p_tipo_car_id, :p_nombre, :p_codigoint," +
                                                     ":p_id_tipo_car, :p_idinsc, :p_fecha ,:p_causa )");
             com.Parameters.AddWithValue("p_incripcion_id", DbType.Int32).Value = ca.IdInscripcion;
             com.Parameters.AddWithValue("p_tipo_car_id", DbType.Int32).Value = ca.Tipos_Carreras_Id;
@@ -53,7 +53,7 @@ namespace DAO
 
             com.Parameters.AddWithValue("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ca.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = ca.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDInsertarCarrera");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Carrera");
 
         }
 
@@ -96,7 +96,7 @@ namespace DAO
 
             com.Parameters.AddWithValue("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ca.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = ca.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDUpdateCarreras");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
 
        

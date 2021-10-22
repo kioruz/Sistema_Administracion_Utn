@@ -41,7 +41,7 @@ namespace DAO
         }
         public int Insertar(Instancias ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertarinstancia(:p_incripcion_id, :p_nombre, :p_idinscripcion, :p_anio," +
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_Instancia(:p_incripcion_id, :p_nombre, :p_idinscripcion, :p_anio," +
                                                     ":p_nroInscripcion, :p_estado, :p_fechainicio ,:p_fechafin )");
             com.Parameters.AddWithValue("p_incripcion_id", DbType.Int32).Value = ins.Inscripciones_Id;
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
@@ -54,7 +54,7 @@ namespace DAO
 
             com.Parameters.AddWithValue("p_fechainicio", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaInicio).Date;
             com.Parameters.AddWithValue("p_fechafin", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaFin).Date;
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDInsertarCarrera");
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Instancia");
 
         }
 
@@ -100,7 +100,7 @@ namespace DAO
 
             com.Parameters.Add("p_fechainicio", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaInicio).Date;
             com.Parameters.Add("p_fechafin", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaFin).Date;
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDUpdateCarreras");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
 
 

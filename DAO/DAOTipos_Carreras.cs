@@ -41,7 +41,7 @@ namespace DAO
         com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tc.Nombre;
         com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tc.FechaBaja).Date;
         com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tc.CausaBaja.Trim();
-        return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertartipocarreras");
+        return ds.EjecutarProcedimientoAlmacenado(com,"");
 
     }
 
@@ -69,7 +69,7 @@ namespace DAO
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tc.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tc.CausaBaja.Trim();
            
-        return ds.EjecutarProcedimientoAlmacenado(com, "pdupdatetipocarreras");
+        return ds.EjecutarProcedimientoAlmacenado(com,"");
     }
 
 

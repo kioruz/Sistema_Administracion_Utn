@@ -48,7 +48,7 @@ namespace DAO
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = user.Nombre;
             com.Parameters.Add("p_clave", NpgsqlDbType.Varchar, 255).Value = user.Clave;
 
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertarusuarios");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
         /* Create or replace procedure pdinsertarusuarios(p_us character varying,
                                                p_apellido character varying,
@@ -73,7 +73,7 @@ namespace DAO
             com.Parameters.Add("p_clave", NpgsqlDbType.Varchar, 255).Value = us.Clave;
             com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(us.FechaBaja).Date;
             com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = us.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdupdateusuarios");
+            return ds.EjecutarProcedimientoAlmacenado(com,"");
         }
 
         /*create or replace procedure pdupdateusuarios( p_us character varying,

@@ -6,6 +6,41 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style3 {
+            width: 146px;
+            font-size: x-large;
+            text-align: center;
+            height: 56px;
+        }
+        .auto-style11 {
+            height: 56px;
+        }
+        .auto-style5 {
+            width: 146px;
+            height: 26px;
+            text-align: right;
+        }
+        .auto-style6 {
+            height: 26px;
+        }
+        .auto-style4 {
+            width: 146px;
+            text-align: right;
+        }
+        .auto-style12 {
+            width: 146px;
+            text-align: right;
+            height: 30px;
+        }
+        .auto-style13 {
+            height: 30px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -18,7 +53,7 @@
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
             </p>
         </div>
-            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" ShowFooter="True" AllowSorting="True">
+            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" AllowSorting="True">
                 <Columns>
                     <asp:TemplateField HeaderText="Controles">
 
@@ -55,7 +90,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtNombre0" runat="server" Text ='<%# Eval("Nombre") %>' />
+                            <asp:TextBox ID="txtNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Fecha">
@@ -67,7 +102,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtFecha0" runat="server"   Text ='<%# Eval("Fechabaja") %>' />
+                            <asp:TextBox ID="txtFecha" runat="server"   Text ='<%# Eval("Fechabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Causabaja">
@@ -79,7 +114,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtCausabaja0" runat="server" Text ='<%# Eval("Causabaja") %>' />
+                            <asp:TextBox ID="txtCausabaja" runat="server" Text ='<%# Eval("Causabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      
@@ -97,6 +132,26 @@
                 <SortedDescendingCellStyle BackColor="#F1E5CE" />
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
+        <p>
+            &nbsp;</p>
+        <div>
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style3"><strong>Agregar Inscripción</strong></td>
+                    <td class="auto-style11"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Nombre:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <asp:Button ID="btn_aceptar" runat="server" CssClass="auto-style7" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
+        </div>
     </form>
 </body>
 </html>

@@ -35,52 +35,40 @@ namespace DAO
         }
         public int Insertar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertarinscripcion(:p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_Inscripcion(:p_nombre, :tabla)");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertarinscripcion");
-
+            com.Parameters.Add("tabla", NpgsqlDbType.Varchar, 255).Value = "\"Inscripciones\"";
+            return ds.EjecutarProcedimientoAlmacenado(com,"insertar_Inscripcion");
         }
-        
-        /*Create or replace procedure pdinsertarinscripcion (p_nombre character varying ,
-											  p_fecha date,
-											  p_causa text)
-            as 
-            $$
-	            begin
-		            insert into "INSCRIPCIONES" ("Nombre", "Fechabaja",
-					            "Causabaja")
-		            values(p_nombre,p_fecha,
-			               p_causa);
-		            end;
-            $$
-            language plpgsql;*/
-
-
 
         public int Actualizar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdupdateinscripciones(:p_id, :p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = ins.Id;
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_Tabla(:p_id, :p_nombre, :p_fecha, :p_causa, :tabla)");
+            
+            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDUpdateInscripciones");
+            com.Parameters.Add("tabla", NpgsqlDbType.Varchar, 255).Value = "\"INSCRIPCIONES\"";
+
+            if (ins.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (ins.CausaBaja != "")
+            {
+                com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
+
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_Inscripciones");
         }
-        /*create or replace procedure PDUpdateCarreras(p_id integer,
-											   p_nombre character varying,
-											   p_fecha date,
-											   p_causa text)
-        as
-        $$
-	        begin
-		        update "INSCRIPCIONES" set "Nombre" = p_nombre,  
-					                    "Fechabaja" = p_fecha, "Causabaja" = p_causa 
-										where "Id" = p_id;		
-            end;
-        $$
-        language plpgsql;*/
     }
 }
 
