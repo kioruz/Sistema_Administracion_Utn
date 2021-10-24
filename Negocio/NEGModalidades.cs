@@ -20,7 +20,7 @@ namespace Negocio
         }
         public bool ActualizarTabla(string id, string nombre, string fecha, string causa)
         {
-            Modalidades mod = new Modalidades(int.Parse(id), nombre, fecha, causa);
+            Modalidades mod = new Modalidades(id, nombre, fecha, causa);
             DAOModalidad dao = new DAOModalidad();
             int op = dao.Actualizar(mod);
             if (op == 1)
@@ -29,13 +29,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarAnexo(string nombre, string fecha, string causa)
+        public bool AgregarModalidad(string nombre)
         {
             Modalidades mod = new Modalidades();
             DAOModalidad dao = new DAOModalidad();
             mod.Nombre = nombre;
-            mod.FechaBaja = fecha;
-            mod.CausaBaja = causa;
             int op = dao.Insertar(mod);
             if (op == 1)
                 return true;

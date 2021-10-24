@@ -20,7 +20,7 @@ namespace Negocio
         }
         public bool ActualizarTabla(string id, string nombre, string fecha, string causa)
         {
-            Tipos_Carreras car = new Tipos_Carreras(int.Parse(id), nombre, fecha, causa);
+            Tipos_Carreras car = new Tipos_Carreras(id, nombre, fecha, causa);
             DAOTipos_Carreras dao = new DAOTipos_Carreras();
             int op = dao.Actualizar(car);
             if (op == 1)
@@ -29,13 +29,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarAnexo(string nombre, string fecha, string causa)
+        public bool AgregarTipoCarrera(string nombre)
         {
             Tipos_Carreras car = new Tipos_Carreras();
             DAOTipos_Carreras dao = new DAOTipos_Carreras();
             car.Nombre = nombre;
-            car.FechaBaja = fecha;
-            car.CausaBaja = causa;
             int op = dao.Insertar(car);
             if (op == 1)
                 return true;

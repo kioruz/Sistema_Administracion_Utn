@@ -19,7 +19,7 @@ namespace DAO
     {
         Turnos tn = new Turnos();
         DataTable tabla = ds.ObtenerTabla("TURNOS", "select * from \"TURNOS\" where \"Id\" like " + "'" + idTurnos + "'");
-        tn.Id = int.Parse(idTurnos);
+        tn.Id = idTurnos;
         tn.Nombre = tabla.Rows[0][1].ToString();
         tn.FechaBaja = tabla.Rows[0][2].ToString();
         tn.CausaBaja = tabla.Rows[0][3].ToString();
@@ -36,55 +36,38 @@ namespace DAO
     }
     public int Insertar(Turnos tn)
     {
-        NpgsqlCommand com = new NpgsqlCommand("call pdinsertarturnos(:p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tn.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tn.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tn.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertarturnos");
-
+        NpgsqlCommand com = new NpgsqlCommand("call insertar_TURNOS(:p_nombre)");
+        com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tn.Nombre;
+        return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TURNOS");
     }
 
-        /*Create or replace procedure pdinsertarturnos (p_nombre character varying ,
-                                              p_fecha date,
-                                              p_causa text)
-            as 
-            $$
-                begin
-                    insert into "TURNOS" ("Nombre", "Fechabaja",
-                                "Causabaja")
-                    values(p_nombre,p_fecha,
-                           p_causa);
-                    end;
-            $$
-            language plpgsql;*/
-
-
-
-        public int Actualizar(Turnos tn)
+        public int Actualizar(Turnos ins)
     {
-        NpgsqlCommand com = new NpgsqlCommand("call pdupdateturnos(:p_id, :p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = tn.Id;
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tn.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tn.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tn.CausaBaja.Trim();
-            
-        return ds.EjecutarProcedimientoAlmacenado(com, "pdupdateturnos");
+        NpgsqlCommand com = new NpgsqlCommand("call actualizar_TURNOS(:p_id, :p_nombre, :p_fecha, :p_causa )");
+
+            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
+
+            if (ins.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (ins.CausaBaja != "")
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
+
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TURNOS");
     }
-
-
-        /*create or replace procedure pdupdateturnos(p_id integer,
-                                               p_nombre character varying,
-                                               p_fecha date,
-                                               p_causa text)
-        as
-        $$
-            begin
-                update "TURNOS" set "Nombre" = p_nombre,  
-                                        "Fechabaja" = p_fecha, "Causabaja" = p_causa 
-                                        where "Id" = p_id;		
-            end;
-        $$
-        language plpgsql;*/
     }
 }
 

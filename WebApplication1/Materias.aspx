@@ -20,10 +20,14 @@
             <p>
             <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
             </p>
+            <p style="margin-left: 920px">
+            Usuario:
+            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+            </p>
             <div class="auto-style1">
             Materias</div>
             <br />
-            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" ShowFooter="True" AllowSorting="True">
+            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" AllowSorting="True">
                 <Columns>
                     <asp:TemplateField HeaderText="Controles">
 
@@ -41,11 +45,14 @@
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="ID">
+                        <EditItemTemplate>
+                            <asp:Label ID="lbl_ID" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                        </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="txtid" runat="server"></asp:TextBox>
                         </FooterTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lblid" runat="server" Text='<%# Eval("id") %>' />
+                            <asp:Label ID="lbl_ID" runat="server" Text='<%# Eval("id") %>' />
 
                         </ItemTemplate>
 
@@ -60,7 +67,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
+                            <asp:TextBox ID="tbxNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Fecha">
@@ -72,7 +79,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtFecha" runat="server"   Text ='<%# Eval("Fechabaja") %>' />
+                            <asp:TextBox ID="tbxFechabaja" runat="server"   Text ='<%# Eval("Fechabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Causabaja">
@@ -84,7 +91,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtCausabaja" runat="server" Text ='<%# Eval("Causabaja") %>' />
+                            <asp:TextBox ID="tbxCausabaja" runat="server" Text ='<%# Eval("Causabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      
@@ -103,11 +110,26 @@
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
             <br />
-            <asp:Label ID="Label1" runat="server"></asp:Label>
             <br />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InicioB.aspx">Volver</asp:HyperLink>
         </div>
-        
+        <div>
+            <table>
+                <tr>
+                    <td class="auto-style3"><strong>Agregar Materia</strong></td>
+                    <td class="auto-style11"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Nombre:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <asp:Button ID="btn_aceptar" runat="server" CssClass="auto-style7" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
+        </div>
     </form>
 </body>
 </html>

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NEGAnexos.cs" />
+    <Compile Include="NEGCarreras.cs" />
     <Compile Include="NEGInscripciones.cs" />
     <Compile Include="NEGInstancias.cs" />
     <Compile Include="NEGMaterias.cs" />

@@ -13,6 +13,15 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuarios usuario = (Usuarios)Session["Usuario"];
+
+            if (usuario == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            lblNombreUsuario.Text = usuario.Usuario;
+
             if (!IsPostBack)
             {
                 CargarTabla();
@@ -74,32 +83,21 @@ namespace WebApplication1
             TextBox t7 = gv.Rows[e.RowIndex].FindControl("txtFechainicio") as TextBox;
             TextBox t8 = gv.Rows[e.RowIndex].FindControl("txtFechafin") as TextBox;
           
-
             negins.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text, int.Parse(t4.Text), t5.Text, t6.Text, t7.Text, t8.Text);
             gv.EditIndex = -1;
             CargarTabla();
         }
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inicio.aspx");
+        }
+
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnQuitarFiltro_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void gv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

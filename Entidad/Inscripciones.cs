@@ -9,12 +9,12 @@ namespace Entidad
     public class Inscripciones
     {
         //Attributes
-        private int id;
+        private String id;
         private String nombre;
         private String fechaBaja;
         private String causaBaja;
         //Constructors
-        public Inscripciones(int id, string nombre, string fechaBaja, string causaBaja)
+        public Inscripciones(string id, string nombre, string fechaBaja, string causaBaja)
         {
             this.Id = id;
             this.Nombre = nombre;
@@ -25,7 +25,7 @@ namespace Entidad
         public Inscripciones() { }
 
         //Getters and Setters
-        public int Id { get => id; set => id = value; }
+        public string Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string FechaBaja { get => fechaBaja; set => fechaBaja = value; }
         public string CausaBaja { get => causaBaja; set => causaBaja = value; }

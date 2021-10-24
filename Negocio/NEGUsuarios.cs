@@ -32,10 +32,11 @@ namespace Negocio
          }
         
 
-        public bool ActualizarUsuario( string nombre, string apellido, string clave, string fecha, string causa)
+        public bool ActualizarUsuario(string usuario, string nombre, string apellido, string clave, string fecha, string causa)
         {
             Usuarios us = new Usuarios();
             DAOUsuarios dao = new DAOUsuarios();
+            us.Usuario = usuario;
             us.Nombre = nombre;
             us.Apellido = apellido;
             us.Clave = clave;

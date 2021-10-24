@@ -19,7 +19,7 @@ namespace DAO
         {
             Modalidades mod = new Modalidades();
             DataTable tabla = ds.ObtenerTabla("MODALIDADES", "select * from \"MODALIDADES\" where \"Id\" like " + "'" + idModalidades + "'");
-            mod.Id = int.Parse(idModalidades);
+            mod.Id = idModalidades;
             mod.Nombre = tabla.Rows[0][1].ToString();
             mod.FechaBaja = tabla.Rows[0][2].ToString();
             mod.CausaBaja = tabla.Rows[0][3].ToString();
@@ -36,54 +36,37 @@ namespace DAO
         }
         public int Insertar(Modalidades mod)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call pdinsertarmodalidades(:p_nombre, :p_fecha, :p_causa )");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_MODALIDADES(:p_nombre)");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mod.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mod.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mod.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "pdinsertarmodalidades");
-
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_MODALIDADES");
         }
-       
-        /*Create or replace procedure pdinsertarmodalidades (p_nombre character varying ,
-											  p_fecha date,
-											  p_causa text)
-            as 
-            $$
-	            begin
-		            insert into "MODALIDADES" ("Nombre", "Fechabaja",
-					            "Causabaja")
-		            values(p_nombre,p_fecha,
-			               p_causa);
-		            end;
-            $$
-            language plpgsql;*/
 
-
-
-        public int Actualizar(Modalidades mod)
+        public int Actualizar(Modalidades ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call PDUpdateModalidades(:p_id, :p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = mod.Id;
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = mod.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(mod.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = mod.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "PDUpdateModalidades");
-        }
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_MODALIDADES(:p_id, :p_nombre, :p_fecha, :p_causa )");
 
-       
-        /*create or replace procedure PDUpdateModalidades(p_id integer,
-											   p_nombre character varying,
-											   p_fecha date,
-											   p_causa text)
-        as
-        $$
-	        begin
-		        update "MODALIDADES" set "Nombre" = p_nombre,  
-					                    "Fechabaja" = p_fecha, "Causabaja" = p_causa 
-										where "Id" = p_id;		
-            end;
-        $$
-        language plpgsql;*/
+            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
+
+            if (ins.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (ins.CausaBaja != "")
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_MODALIDADES");
+        }
     }
 }
 
