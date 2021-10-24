@@ -78,21 +78,12 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.Label lblUsuario;
 
         /// <summary>
-        /// Control lblRegister.
+        /// Control HlinkRegistrarse.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegister;
-
-        /// <summary>
-        /// Control btnRegister.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.HyperLink HlinkRegistrarse;
     }
 }

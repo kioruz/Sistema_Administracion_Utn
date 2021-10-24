@@ -1,0 +1,133 @@
+﻿* {
+    margin:0px;
+    padding:0px;
+}
+.header {
+    background-color: rgb(242,242,240);
+    height: 100px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.header-container{
+    height:80%;
+    width:90%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+}
+.header-item{
+    display:flex;
+    align-items:center;
+}
+.logo {
+    display: block;
+    width: 300px;
+    height:auto;
+}
+.flex-body{
+    height:100vh;
+    display:flex;
+    flex-flow:column nowrap;
+}
+.flex-main{
+    flex-grow:1;
+}
+.flex-form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: stretch;
+    align-content: space-around;
+    justify-content: center;
+}
+.titulo {
+    min-width: 255px;
+    display: flex;
+    justify-content: center;
+    margin-bottom:40px;
+    margin-top:20px;
+}
+.hr{
+    width:100%;
+}
+.rows{
+    display:flex;
+    flex-flow:row wrap;
+    column-gap:20px;
+}
+.col{
+    display:flex;
+    flex-flow:column wrap;
+}
+.form-textbox {
+    font-weight: bold;
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 10px;
+    height:100px;
+    min-width:200px;
+    margin: 10px;
+    justify-content:space-evenly;
+}
+.textbox{
+    height:30px;
+}
+.form-btn {
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.btn{
+    background-color: #1c819f;
+    height: 40px;
+    width: 130px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: all .3s linear;
+}
+.btn:hover {
+    box-shadow: 3px 0px 20px #1c819f;
+}
+.msj-error{
+    height:10px;
+    color:red;
+    display:flex;
+    flex-flow:column wrap;
+    align-content:center;
+    margin:10px;
+}
+.label-error{
+    color:red;
+    font-weight:lighter;
+}
+.hyperlink{
+    text-decoration:none;
+    color:black;
+    transition:all .3s linear;
+}
+.hyperlink:hover{
+    color:blue;
+}
+.footer {
+    background-color: #171717;
+    height: 70px;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    margin-top:10px;
+}
+.footer-container{
+    width:70%;
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+}
+.copyright {
+    font-size:0.7em;
+}

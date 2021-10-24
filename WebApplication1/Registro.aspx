@@ -4,94 +4,76 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
-    <style type="text/css">
-
-        .auto-style1 {
-            width: 100%;
-        }
-        .auto-style5 {
-            width: 135px;
-            font-size: x-large;
-            height: 31px;
-        }
-        .auto-style6 {
-            font-size: large;
-            height: 31px;
-        }
-        .auto-style8 {
-            width: 135px;
-            height: 26px;
-        }
-        .auto-style9 {
-            height: 26px;
-        }
-        .auto-style2 {
-            width: 135px;
-        }
-        .auto-style3 {
-            width: 135px;
-            height: 23px;
-        }
-        .auto-style4 {
-            height: 23px;
-        }
-        </style>
+    <link rel="stylesheet" href="Css/Estilos.css" />
 </head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <table class="auto-style1">
-                <tr>
-                    <td class="auto-style5"></td>
-                    <td class="auto-style6">Registrarse</td>
-                </tr>
-                <tr>
-                    <td class="auto-style8">Nombre:</td>
-                    <td class="auto-style9">
-                        <asp:TextBox ID="tbx_Nombre" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="tbx_Nombre" ErrorMessage="Ingrese el nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">Apellido</td>
-                    <td>
-                        <asp:TextBox ID="tbx_Apellido" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvNombre0" runat="server" ControlToValidate="tbx_Apellido" ErrorMessage="Ingrese el apellido" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">Usuario</td>
-                    <td class="auto-style4">
-                        <asp:TextBox ID="tbx_Usuario" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" ControlToValidate="tbx_Usuario" ErrorMessage="Ingrese el usuario" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">Contraseña:</td>
-                    <td class="auto-style4">
-                        <asp:TextBox ID="tbx_Pass" runat="server" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvNombre3" runat="server" ControlToValidate="tbx_Pass" EnableTheming="True" ErrorMessage="Ingrese contraseña" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">Repetir Contraseña:</td>
-                    <td>
-                        <asp:TextBox ID="tbx_PassRepetida" runat="server" TextMode="Password"></asp:TextBox>
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="tbx_Pass" ControlToValidate="tbx_PassRepetida" ErrorMessage="Las password no coinciden" ValidationGroup="grupo2"></asp:CompareValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">
-                        <asp:Button ID="btn_Inicio" runat="server" OnClick="btn_Inicio_Click" Text="Login" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btn_Aceptar" runat="server" OnClick="btn_Aceptar_Click" onClientClick="if(Page_ClientValidate('grupo2'))" Text="Aceptar" ValidationGroup="grupo2" />
-                    </td>
-                </tr>
-            </table>
+<body class="flex-body">
+    <header class="header">
+        <div class="header-container">
+            <div class="header-item">
+                <a href="#">
+                    <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
+                </a>
+            </div>
+            <div class="header-item">
+                <h2>Sistema de Administración Web</h2>
+            </div>
         </div>
-    </form>
+    </header>
+    <main class="flex-main">
+        <form id="form1" runat="server">
+            <div class="flex-form">
+                <div>
+                    <h1 class="titulo">Registrarse</h1>
+                    <hr />
+                </div>
+                <div class="rows">
+                    <div class="col">
+                        <div class="form-textbox">
+                            <label for="tbx_Nombre">Nombre</label>
+                            <asp:TextBox ID="tbx_Nombre" CssClass="textbox" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvNombre" CssClass="label-error" runat="server" ControlToValidate="tbx_Nombre" ErrorMessage="Ingrese el nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <div class="form-textbox">
+                            <label for="tbx_Pass">Contraseña:</label>
+                            <asp:TextBox ID="tbx_Pass" CssClass="textbox" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvNombre3" CssClass="label-error" runat="server" ControlToValidate="tbx_Pass" EnableTheming="True" ErrorMessage="Ingrese contraseña" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-textbox">
+                            <label for="tbx_Usuario">Usuario</label>
+                            <asp:TextBox ID="tbx_Usuario" CssClass="textbox" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator  ID="rfvUsuario" CssClass="label-error" runat="server" ControlToValidate="tbx_Usuario" ErrorMessage="Ingrese el usuario" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-textbox">
+                            <label for="tbx_Apellido">Apellido</label>
+                            <asp:TextBox ID="tbx_Apellido" CssClass="textbox" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvNombre0" CssClass="label-error" runat="server" ControlToValidate="tbx_Apellido" ErrorMessage="Ingrese el apellido" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="form-textbox">
+                            <label for="tbx_PassRepetida">Repetir Contraseña:</label>
+                            <asp:TextBox ID="tbx_PassRepetida" CssClass="textbox" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:CompareValidator ID="CompareValidator1" CssClass="label-error" runat="server" ControlToCompare="tbx_Pass" ControlToValidate="tbx_PassRepetida" ErrorMessage="Las password no coinciden" ValidationGroup="grupo2"></asp:CompareValidator>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-btn">
+                    <asp:Button ID="btn_Inicio" CssClass="btn" runat="server" OnClick="btn_Inicio_Click" Text="Login" />
+                    <asp:Button ID="btn_Aceptar" CssClass="btn" runat="server" OnClick="btn_Aceptar_Click" OnClientClick="if(Page_ClientValidate('grupo2'))" Text="Aceptar" ValidationGroup="grupo2" />
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <hr class="hr" />
+            <span class="copyright">Copyright © 2021 Universidad Tecnológica Nacional</span>
+        </div>
+    </footer>
 </body>
 </html>

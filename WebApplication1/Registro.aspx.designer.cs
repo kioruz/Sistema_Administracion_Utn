@@ -42,22 +42,22 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
 
         /// <summary>
-        /// Control tbx_Apellido.
+        /// Control tbx_Pass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_Apellido;
+        protected global::System.Web.UI.WebControls.TextBox tbx_Pass;
 
         /// <summary>
-        /// Control rfvNombre0.
+        /// Control rfvNombre3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre0;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre3;
 
         /// <summary>
         /// Control tbx_Usuario.
@@ -78,22 +78,22 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUsuario;
 
         /// <summary>
-        /// Control tbx_Pass.
+        /// Control tbx_Apellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_Pass;
+        protected global::System.Web.UI.WebControls.TextBox tbx_Apellido;
 
         /// <summary>
-        /// Control rfvNombre3.
+        /// Control rfvNombre0.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre0;
 
         /// <summary>
         /// Control tbx_PassRepetida.
