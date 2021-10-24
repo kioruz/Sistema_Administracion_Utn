@@ -29,14 +29,11 @@ namespace Negocio
                 return false;
                 
         }
-        public bool AgregarAnexo(string id, string nombre, string fecha, string causa)
+        public bool AgregarAnexo(string nombre)
         {
             Anexos an = new Anexos();
             DAOAnexos dao = new DAOAnexos();
-            an.Id = id;
             an.Nombre = nombre;
-            an.FechaBaja = fecha;
-            an.CausaBaja = causa;
            int op = dao.Insertar(an);
             if (op == 1)
                 return true;

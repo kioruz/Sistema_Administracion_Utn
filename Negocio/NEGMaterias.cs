@@ -49,25 +49,21 @@ namespace Negocio
         }
       
         
-        public string AgregarMateria(string id, string nomb, string fecha, string causa)
+        public string AgregarMateria(string nombre)
         {
             Materias MatEn = new Materias();
             DAOMaterias dao = new DAOMaterias();
-            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(nomb) || string.IsNullOrWhiteSpace(fecha) ||
-                string.IsNullOrWhiteSpace(causa))
-            { return "No se permiten espacios vacios"; }
-            else
-            {
-                MatEn.Nombre = nomb;
-                MatEn.FechaBaja = fecha;
-                MatEn.CausaBaja = causa;
-                  
-                    if (dao.Insertar(MatEn) == 1)
-                    { return "Agregado"; }
-                    else { return "Error al Agregar"; }
 
+             MatEn.Nombre = nombre;
+                  
+            if (dao.Insertar(MatEn) == 1)
+            { 
+              return "Agregado"; 
+            }
+            else 
+            { 
+              return "Error al Agregar"; 
             }
         }
-       
     }
 }

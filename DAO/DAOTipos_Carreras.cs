@@ -37,23 +37,37 @@ namespace DAO
         }
         public int Insertar(Tipos_Carreras tc)
         {
-        NpgsqlCommand com = new NpgsqlCommand("call insertar_TIPOS_CARRERAS(:p_nombre, :p_fecha, :p_causa )");
-        com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tc.Nombre;
-        com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tc.FechaBaja).Date;
-        com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tc.CausaBaja.Trim();
-        return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TIPOS_CARRERAs");
-
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_TIPOS_CARRERAS(:p_nombre)");
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tc.Nombre;
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TIPOS_CARRERAS");
         }
 
-        public int Actualizar(Tipos_Carreras tc)
+        public int Actualizar(Tipos_Carreras ins)
         {
-        NpgsqlCommand com = new NpgsqlCommand("call actualizar_TIPOS_CARRERAS(:p_id :p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = tc.Id;
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tc.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tc.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tc.CausaBaja.Trim();
-           
-        return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_TIPOS_CARRERAS");
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_TIPOS_CARRERAS(:p_id, :p_nombre, :p_fecha, :p_causa )");
+
+            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
+
+            if (ins.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (ins.CausaBaja != "")
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
+
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_TIPOS_CARRERAS");
         }
 
     }

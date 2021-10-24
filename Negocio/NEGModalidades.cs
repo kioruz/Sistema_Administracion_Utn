@@ -29,14 +29,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarModalidad(string id, string nombre, string fecha, string causa)
+        public bool AgregarModalidad(string nombre)
         {
             Modalidades mod = new Modalidades();
             DAOModalidad dao = new DAOModalidad();
-            mod.Id = id;
             mod.Nombre = nombre;
-            mod.FechaBaja = fecha;
-            mod.CausaBaja = causa;
             int op = dao.Insertar(mod);
             if (op == 1)
                 return true;

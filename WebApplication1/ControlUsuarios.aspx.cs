@@ -42,16 +42,20 @@ namespace WebApplication1
             gvUsuarios.EditIndex = e.NewEditIndex;
             CargarTabla();
         }
-        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("AddNew"))
-            {
-                CargarTabla();
-            }
-        }
         protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            NEGUsuarios NegUs = new NEGUsuarios();
 
+            Label lblUsuario = gvUsuarios.Rows[e.RowIndex].FindControl("lblUsuario") as Label;
+            TextBox txtApellido = gvUsuarios.Rows[e.RowIndex].FindControl("tbxApellido") as TextBox;
+            TextBox txtNombre = gvUsuarios.Rows[e.RowIndex].FindControl("tbxNombre") as TextBox;
+            TextBox txtClave = gvUsuarios.Rows[e.RowIndex].FindControl("tbxClave") as TextBox;
+            TextBox txtFechabaja = gvUsuarios.Rows[e.RowIndex].FindControl("tbxFechabaja") as TextBox;
+            TextBox txtCausabaja = gvUsuarios.Rows[e.RowIndex].FindControl("tbxCausabaja") as TextBox;
+
+            NegUs.ActualizarUsuario(lblUsuario.Text, txtApellido.Text, txtNombre.Text, txtClave.Text, txtFechabaja.Text, txtCausabaja.Text);
+            gvUsuarios.EditIndex = -1;
+            CargarTabla();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

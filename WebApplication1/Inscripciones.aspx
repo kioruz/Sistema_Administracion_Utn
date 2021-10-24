@@ -71,11 +71,14 @@
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="ID">
+                        <EditItemTemplate>
+                            <asp:Label ID="lbl_ID" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                        </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="txtid" runat="server"></asp:TextBox>
                         </FooterTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lblid" runat="server" Text='<%# Eval("id") %>' />
+                            <asp:Label ID="lbl_ID" runat="server" Text='<%# Eval("Id") %>' />
 
                         </ItemTemplate>
 
@@ -90,7 +93,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
+                            <asp:TextBox ID="tbxNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Fecha">
@@ -102,7 +105,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtFecha" runat="server"   Text ='<%# Eval("Fechabaja") %>' />
+                            <asp:TextBox ID="tbxFechabaja" runat="server"   Text ='<%# Eval("Fechabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Causabaja">
@@ -114,7 +117,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtCausabaja" runat="server" Text ='<%# Eval("Causabaja") %>' />
+                            <asp:TextBox ID="tbxCausabaja" runat="server" Text ='<%# Eval("Causabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
                      

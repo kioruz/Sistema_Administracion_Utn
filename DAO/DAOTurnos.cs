@@ -36,23 +36,37 @@ namespace DAO
     }
     public int Insertar(Turnos tn)
     {
-        NpgsqlCommand com = new NpgsqlCommand("call insertar_TURNOS(:p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tn.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tn.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tn.CausaBaja.Trim();
-            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TURNOS");
-
+        NpgsqlCommand com = new NpgsqlCommand("call insertar_TURNOS(:p_nombre)");
+        com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tn.Nombre;
+        return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TURNOS");
     }
 
-        public int Actualizar(Turnos tn)
+        public int Actualizar(Turnos ins)
     {
         NpgsqlCommand com = new NpgsqlCommand("call actualizar_TURNOS(:p_id, :p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = tn.Id;
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = tn.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(tn.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = tn.CausaBaja.Trim();
-            
-        return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TURNOS");
+
+            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
+
+            if (ins.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (ins.CausaBaja != "")
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
+
+            return ds.EjecutarProcedimientoAlmacenado(com, "insertar_TURNOS");
     }
     }
 }

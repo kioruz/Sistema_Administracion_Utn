@@ -29,14 +29,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarTipoCarrera(string id, string nombre, string fecha, string causa)
+        public bool AgregarTipoCarrera(string nombre)
         {
             Tipos_Carreras car = new Tipos_Carreras();
             DAOTipos_Carreras dao = new DAOTipos_Carreras();
-            car.Id = id;
             car.Nombre = nombre;
-            car.FechaBaja = fecha;
-            car.CausaBaja = causa;
             int op = dao.Insertar(car);
             if (op == 1)
                 return true;

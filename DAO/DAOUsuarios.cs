@@ -53,12 +53,30 @@ namespace DAO
         public int Actualizar(Usuarios us)
         {
             NpgsqlCommand com = new NpgsqlCommand("call actualizar_USUARIOS(:p_us, :p_apellido, :p_nombre, :p_clave, :p_fecha, :p_causa )");
+           
             com.Parameters.Add("p_us", NpgsqlDbType.Varchar, 255).Value = us.Usuario;
             com.Parameters.Add("p_apellido", NpgsqlDbType.Varchar, 255).Value = us.Apellido;
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = us.Nombre;
             com.Parameters.Add("p_clave", NpgsqlDbType.Varchar, 255).Value = us.Clave;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(us.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = us.CausaBaja.Trim();
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = us.Nombre;
+
+            if (us.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(us.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (us.CausaBaja != "")
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = us.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
             return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_USUARIOS");
         }
     }

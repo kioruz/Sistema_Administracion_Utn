@@ -56,9 +56,7 @@ namespace DAO
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd = Comando;
             cmd.Connection = Conexion;
-            // cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = NombreSP;
             
             FilasCambiadas = cmd.ExecuteNonQuery();
             Conexion.Close();

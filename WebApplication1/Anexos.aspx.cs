@@ -13,6 +13,8 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
             Usuarios usuario = (Usuarios)Session["Usuario"];
 
             if (usuario == null)
@@ -46,33 +48,16 @@ namespace WebApplication1
             gv.EditIndex = e.NewEditIndex;
             CargarTabla();
         }
-
-        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("AddNew"))
-            {
-                NEGAnexos AnexoNeg = new NEGAnexos();
-                TextBox txtID = (TextBox)gv.FooterRow.FindControl("txtId");
-                TextBox txtNomb = (TextBox)gv.FooterRow.FindControl("txtnombre");
-                TextBox txtFecha = (TextBox)gv.FooterRow.FindControl("txtFecha");
-                TextBox txtCausa = (TextBox)gv.FooterRow.FindControl("txtCausabaja");
-
-                AnexoNeg.AgregarAnexo(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
-
-                CargarTabla();
-            }
-        }
         protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             NEGAnexos AnexoInc = new NEGAnexos();
-            Inscripciones Anexo = new Inscripciones();
-            Label l1 = gv.Rows[e.RowIndex].FindControl("lblid") as Label;
-            TextBox t1 = gv.Rows[e.RowIndex].FindControl("txtNombre") as TextBox;
-            TextBox t2 = gv.Rows[e.RowIndex].FindControl("txtFecha") as TextBox;
-            TextBox t3 = gv.Rows[e.RowIndex].FindControl("txtCausabaja") as TextBox;
 
+            Label lbl_ID = gv.Rows[e.RowIndex].FindControl("lbl_ID") as Label;
+            TextBox txtNombre = gv.Rows[e.RowIndex].FindControl("txtNombre") as TextBox;
+            TextBox txtFechabaja = gv.Rows[e.RowIndex].FindControl("txtFechabaja") as TextBox;
+            TextBox txtCausabaja = gv.Rows[e.RowIndex].FindControl("txtCausabaja") as TextBox;
 
-            AnexoInc.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text);
+            AnexoInc.ActualizarTabla(lbl_ID.Text, txtNombre.Text, txtFechabaja.Text, txtCausabaja.Text);
             gv.EditIndex = -1;
             CargarTabla();
         }
@@ -81,5 +66,13 @@ namespace WebApplication1
             Response.Redirect("Inicio.aspx");
         }
 
+        protected void btn_aceptar_Click(object sender, EventArgs e)
+        {
+            NEGAnexos an = new NEGAnexos();
+   
+            an.AgregarAnexo(tbxNombre.Text);
+
+            CargarTabla();
+        }
     }
 }

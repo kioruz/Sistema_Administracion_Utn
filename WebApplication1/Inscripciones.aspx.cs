@@ -11,6 +11,7 @@ namespace WebApplication1
 {
     public partial class Inscripciones : System.Web.UI.Page
     {
+        NEGInscripciones NegInc = new NEGInscripciones();
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
@@ -50,15 +51,12 @@ namespace WebApplication1
         }
         protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            NEGInscripciones NegInc = new NEGInscripciones();
-            Inscripciones Inscripcion = new Inscripciones();
-            Label l1 = gv.Rows[e.RowIndex].FindControl("lblid") as Label;
-            TextBox t1 = gv.Rows[e.RowIndex].FindControl("txtNombre") as TextBox;
-            TextBox t2 = gv.Rows[e.RowIndex].FindControl("txtFecha") as TextBox;
-            TextBox t3 = gv.Rows[e.RowIndex].FindControl("txtCausabaja") as TextBox;
+            Label lbl_ID = gv.Rows[e.RowIndex].FindControl("lbl_ID") as Label;
+            TextBox txtNombre = gv.Rows[e.RowIndex].FindControl("tbxNombre") as TextBox;
+            TextBox txtFechabaja = gv.Rows[e.RowIndex].FindControl("tbxFechabaja") as TextBox;
+            TextBox txtCausabaja = gv.Rows[e.RowIndex].FindControl("tbxCausabaja") as TextBox;
 
-
-            NegInc.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text);
+            NegInc.ActualizarTabla(lbl_ID.Text, txtNombre.Text, txtFechabaja.Text, txtCausabaja.Text);
             gv.EditIndex = -1;
             CargarTabla();
         }
@@ -69,9 +67,7 @@ namespace WebApplication1
 
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
-            NEGInscripciones inscNeg = new NEGInscripciones();
-
-            inscNeg.AgregarInscripcion(tbxNombre.Text);
+            NegInc.AgregarInscripcion(tbxNombre.Text);
 
             CargarTabla();
         }

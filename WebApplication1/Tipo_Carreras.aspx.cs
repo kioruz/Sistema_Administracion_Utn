@@ -14,6 +14,8 @@ namespace WebApplication1
         NEGTipos_Carreras tpNEG = new NEGTipos_Carreras();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
             Usuarios usuario = (Usuarios)Session["Usuario"];
 
             if (usuario == null)
@@ -47,39 +49,27 @@ namespace WebApplication1
             gv.EditIndex = e.NewEditIndex;
             CargarTabla();
         }
-
-        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("AddNew"))
-            {
-
-                TextBox txtID = (TextBox)gv.FooterRow.FindControl("txtId");
-                TextBox txtNomb = (TextBox)gv.FooterRow.FindControl("txtnombre");
-                TextBox txtFecha = (TextBox)gv.FooterRow.FindControl("txtFecha");
-                TextBox txtCausa = (TextBox)gv.FooterRow.FindControl("txtCausabaja");
-
-                tpNEG.AgregarTipoCarrera(txtID.Text, txtNomb.Text, txtFecha.Text, txtCausa.Text);
-
-                CargarTabla();
-            }
-        }
         protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            Label lbl_ID = gv.Rows[e.RowIndex].FindControl("lbl_ID") as Label;
+            TextBox txt_Nombre = gv.Rows[e.RowIndex].FindControl("tbxNombre") as TextBox;
+            TextBox txt_Fecha = gv.Rows[e.RowIndex].FindControl("tbxFecha") as TextBox;
+            TextBox txt_Causa = gv.Rows[e.RowIndex].FindControl("tbxCausabaja") as TextBox;
 
-            Tipo_Carreras TipoCarrera = new Tipo_Carreras();
-            Label l1 = gv.Rows[e.RowIndex].FindControl("lblid") as Label;
-            TextBox t1 = gv.Rows[e.RowIndex].FindControl("txtNombre") as TextBox;
-            TextBox t2 = gv.Rows[e.RowIndex].FindControl("txtFecha") as TextBox;
-            TextBox t3 = gv.Rows[e.RowIndex].FindControl("txtCausabaja") as TextBox;
-
-
-            tpNEG.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text);
+            tpNEG.ActualizarTabla(lbl_ID.Text, txt_Nombre.Text, txt_Fecha.Text, txt_Causa.Text);
             gv.EditIndex = -1;
             CargarTabla();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx");
+        }
+
+        protected void btn_aceptar_Click(object sender, EventArgs e)
+        {
+            tpNEG.AgregarTipoCarrera(tbxNombre.Text);
+
+            CargarTabla();
         }
     }
 }

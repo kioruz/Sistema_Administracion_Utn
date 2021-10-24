@@ -35,19 +35,17 @@ namespace DAO
         }
         public int Insertar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_INSCRIPCION(:p_nombre, :tabla)");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_INSCRIPCION(:p_nombre)");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
-            com.Parameters.Add("tabla", NpgsqlDbType.Varchar, 255).Value = "\"Inscripciones\"";
             return ds.EjecutarProcedimientoAlmacenado(com, "insertar_INSCRIPCION");
         }
 
         public int Actualizar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call actualizar_INSCRIPCION(:p_id, :p_nombre, :p_fecha, :p_causa, :tabla)");
+            NpgsqlCommand com = new NpgsqlCommand("call actualizar_INSCRIPCIONES(:p_id, :p_nombre, :p_fecha, :p_causa)");
             
             com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
-            com.Parameters.Add("tabla", NpgsqlDbType.Varchar, 255).Value = "\"INSCRIPCIONES\"";
 
             if (ins.FechaBaja != "")
             {
@@ -60,14 +58,14 @@ namespace DAO
 
             if (ins.CausaBaja != "")
             {
-                com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
             }
             else
             {
-                com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
             }
 
-            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_INSCRIPCION");
+            return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_INSCRIPCIONES");
         }
     }
 }

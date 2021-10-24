@@ -35,20 +35,35 @@ namespace DAO
         }
         public int  Insertar(Anexos an)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_ANEXOS(:na, :f, :cb )");
-            com.Parameters.Add("na", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
-            com.Parameters.Add("f", NpgsqlDbType.Date).Value = DateTime.Parse(an.FechaBaja).Date;
-            com.Parameters.AddWithValue("cb", NpgsqlDbType.Text).Value = an.CausaBaja.Trim();
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_ANEXOS(:p_nombre)");
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
             return ds.EjecutarProcedimientoAlmacenado(com, "insertar_Anexos");
-
         }
-        public int Actualizar(Anexos an)
+        public int Actualizar(Anexos ins)
         {
             NpgsqlCommand com = new NpgsqlCommand("call actualizar_ANEXOS(:p_id, :p_nombre, :p_fecha, :p_causa )");
-            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = an.Id;
-            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = an.Nombre;
-            com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(an.FechaBaja).Date;
-            com.Parameters.AddWithValue("p_causa", NpgsqlDbType.Text).Value = an.CausaBaja.Trim();
+
+            com.Parameters.AddWithValue("p_id", DbType.Int32).Value = Convert.ToInt32(ins.Id);
+            com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
+
+            if (ins.FechaBaja != "")
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaBaja).Date;
+            }
+            else
+            {
+                com.Parameters.Add("p_fecha", NpgsqlDbType.Date).Value = DBNull.Value;
+            }
+
+            if (ins.CausaBaja != "")
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = ins.CausaBaja.Trim();
+            }
+            else
+            {
+                com.Parameters.Add("p_causa", NpgsqlDbType.Text).Value = DBNull.Value;
+            }
+
             return ds.EjecutarProcedimientoAlmacenado(com, "actualizar_ANEXOS");
         }
     }

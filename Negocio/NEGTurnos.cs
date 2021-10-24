@@ -29,14 +29,11 @@ namespace Negocio
                 return false;
 
         }
-        public bool AgregarTurno(string id, string nombre, string fecha, string causa)
+        public bool AgregarTurno(string nombre)
         {
             Turnos tn = new Turnos();
             DAOTurnos dao = new DAOTurnos();
-            tn.Id = id;
             tn.Nombre = nombre;
-            tn.FechaBaja = fecha;
-            tn.CausaBaja = causa;
             int op = dao.Insertar(tn);
             if (op == 1)
                 return true;
