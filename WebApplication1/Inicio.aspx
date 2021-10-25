@@ -6,6 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 1040px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -30,6 +35,11 @@
                 </Items>
                 <StaticMenuStyle HorizontalPadding="20px" VerticalPadding="20px" />
             </asp:Menu>
+        &nbsp;&nbsp;&nbsp;
+            <p class="auto-style1">
+            Usuario:
+            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+            </p>
         </div>
     </form>
 </body>

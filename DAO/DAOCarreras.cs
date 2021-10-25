@@ -15,20 +15,6 @@ namespace DAO
     {
         AccesoBase ds = new AccesoBase();
 
-        public Carreras getCarrerasId(String IdCarrera)
-        {
-            Carreras ca = new Carreras();
-            DataTable tabla = ds.ObtenerTabla("CARRERAS", "select * from \"CARRERAS\" where \"Id\" like " + "'"+IdCarrera+"'");
-            ca.Id = IdCarrera;
-            ca.Inscripciones_Id = tabla.Rows[0][1].ToString();
-            ca.Tipos_Carreras_Id = tabla.Rows[0][2].ToString();
-            ca.Nombre = tabla.Rows[0][3].ToString();
-            ca.CodigoInterno = tabla.Rows[0][4].ToString();
-            ca.FechaBaja = tabla.Rows[0][7].ToString();
-            ca.CausaBaja = tabla.Rows[0][8].ToString();
-            return ca;
-        }
-
         public DataTable getCarrerasAll()
         {
             List<Carreras> lista = new List<Carreras>();

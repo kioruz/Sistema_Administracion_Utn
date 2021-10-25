@@ -13,22 +13,7 @@ namespace Negocio
     {
         public DataTable GetTable()
         {
-            DAOMaterias dao = new DAOMaterias();
-           // DataTable tabla = dao.getMateriasAll();
-            //DateTime fecha = new DateTime();
-
-           // String f = "";
-          /*  foreach(DataRow row in tabla.Rows)
-            {   
-                //Elimina fecha de Date pero la agrega en el array.
-               if(!string.IsNullOrEmpty( row[2].ToString()))
-                {
-                    fecha = DateTime.Parse(row[2].ToString());
-                    f = fecha.ToString("dd/MM/yyyy");
-                    row[2] = f;
-                }
-            }
-            return tabla;*/
+            DAOMaterias dao = new DAOMaterias(); 
             return dao.getMateriasAll();
         }
         public bool ActualizarTabla(string id, string nombre, string fecha, string causa)

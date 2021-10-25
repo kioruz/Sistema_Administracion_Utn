@@ -14,18 +14,6 @@ namespace DAO
     {
         AccesoBase ds = new AccesoBase();
 
-        public Inscripciones getInscripcionesId(String IdInscripciones)
-        {
-            Inscripciones ins = new Inscripciones();
-            DataTable tabla = ds.ObtenerTabla("INSCRIPCIONES", "select * from \"INSCRIPCIONES\" where \"Id\" like " + "'"+IdInscripciones+"'");
-            ins.Id = IdInscripciones;
-            ins.Nombre = tabla.Rows[0][1].ToString();
-            ins.FechaBaja = tabla.Rows[0][2].ToString();
-            ins.CausaBaja = tabla.Rows[0][3].ToString();
-           
-            return ins;
-        }
-
         public DataTable getInscripcionesAll()
         {
             List<Inscripciones> lista = new List<Inscripciones>();

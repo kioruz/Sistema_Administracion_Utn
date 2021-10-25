@@ -14,13 +14,7 @@ namespace Negocio
     public class NEGUsuarios
     {
         DAOUsuarios dao = new DAOUsuarios();
-        /*public DataTable GetTable()
-        {
-            DAOUsuarios dao = new DAOUsuarios();
-            return dao.getTablaUsuarios();
-        }*/
-
-         public string GetMD5(string str)
+        public string GetMD5(string str)
          {
              MD5 md5 = MD5CryptoServiceProvider.Create();
              ASCIIEncoding encoding = new ASCIIEncoding();
@@ -31,7 +25,6 @@ namespace Negocio
              return sb.ToString();
          }
         
-
         public bool ActualizarUsuario(string usuario, string nombre, string apellido, string clave, string fecha, string causa)
         {
             Usuarios us = new Usuarios();

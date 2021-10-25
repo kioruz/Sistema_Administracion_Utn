@@ -15,17 +15,6 @@ namespace DAO
     {
         AccesoBase ds = new AccesoBase();
 
-        public Anexos getAnexosID(String IdAnexo)
-        {
-            Anexos an = new Anexos();
-            DataTable tabla = ds.ObtenerTabla("ANEXOS", "select * from \"ANEXOS\" where \"Id\" like " + "'"+IdAnexo+"'");
-            an.Id = IdAnexo;
-            an.Nombre = tabla.Rows[0][1].ToString();
-            an.FechaBaja = tabla.Rows[0][2].ToString();
-            an.CausaBaja = tabla.Rows[0][3].ToString();
-            return an;
-        }
-
         public DataTable getAnexosAll()
         {
             List<Anexos> lista = new List<Anexos>();

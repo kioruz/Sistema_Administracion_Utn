@@ -16,15 +16,9 @@
             Usuario:
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
             </p>
-                <br />
-            Instancias&nbsp;&nbsp;&nbsp; </div>
+            </div>
             <br />
-            <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
-            <br />
-            <br />
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
-            <br />
-            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" ShowFooter="True" OnSelectedIndexChanged="gv_SelectedIndexChanged" AllowSorting="True">
+            <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" AllowSorting="True">
                 <Columns>
                     <asp:TemplateField HeaderText="Controles">
 
@@ -42,6 +36,9 @@
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="ID">
+                        <EditItemTemplate>
+                            <asp:Label ID="lbl_ID" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                        </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="txtid" runat="server"></asp:TextBox>
                         </FooterTemplate>
@@ -59,7 +56,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtINSCRIPCIONES_Id" runat="server" Text ='<%# Eval("INSCRIPCIONES_Id") %>' />
+                            <asp:Label ID="tbx_Inscripcion_ID" runat="server" Text='<%# Eval("INSCRIPCIONES_Id") %>'></asp:Label>
                         </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -72,20 +69,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-
-                     <asp:TemplateField HeaderText="Idinscripcion">
-                        <FooterTemplate>
-                            <asp:TextBox ID="txtIdinscripcion" runat="server"></asp:TextBox>
-                        </FooterTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lblIdinscripcion" runat="server" Text='<%# Eval("Idinscripcion") %>' />
-
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtIdinscripcion" runat="server" Text ='<%# Eval("Idinscripcion") %>' />
+                            <asp:TextBox ID="tbxNombre" runat="server" Text ='<%# Eval("Nombre") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -98,20 +82,7 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtAnio" runat="server" Text ='<%# Eval("Anio") %>' />
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-
-                     <asp:TemplateField HeaderText="Nroinscripcion">
-                        <FooterTemplate>
-                            <asp:TextBox ID="txtNroinscripcion" runat="server"></asp:TextBox>
-                        </FooterTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lblNroinscripcion" runat="server" Text='<%# Eval("Nroinscripcion") %>' />
-
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtNroinscripcion" runat="server" Text ='<%# Eval("Nroinscripcion") %>' />
+                            <asp:TextBox ID="tbxAnio" runat="server" Text ='<%# Eval("Anio") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -124,7 +95,11 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtEstado" runat="server" Text ='<%# Eval("Estado") %>' />
+                            <asp:DropDownList ID="tbx_Estado" runat="server">
+                                <asp:ListItem>Espera</asp:ListItem>
+                                <asp:ListItem>Abierta</asp:ListItem>
+                                <asp:ListItem>Cerrado</asp:ListItem>
+                            </asp:DropDownList>
                         </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -136,7 +111,7 @@
                             <asp:Label ID="lblFechainicio" runat="server"   Text='<%# Eval("Fechainicio","{0:dd/MM/yyyy}") %>' />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtFechainicio" runat="server"  Text ='<%# Eval("Fechainicio","{0:dd/MM/yyyy}") %>' />
+                            <asp:TextBox ID="tbxFechainicio" runat="server"  Text ='<%# Eval("Fechainicio","{0:dd/MM/yyyy}") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -148,7 +123,7 @@
                             <asp:Label ID="lblFechafin" runat="server"  Text='<%# Eval("Fechafin") %>' />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtFechafin" runat="server"   Text ='<%# Eval("Fechafin") %>' />
+                            <asp:TextBox ID="tbxFechafin" runat="server"   Text ='<%# Eval("Fechafin") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>      
 
@@ -166,9 +141,68 @@
             </asp:GridView>
             
             <br />
-            <asp:Label ID="Label1" runat="server"></asp:Label>
             <br />
             
+        </div>
+        <div>
+            <br />
+            <br />
+            <br />
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style3"><strong>Agregar Carrera</strong></td>
+                    <td class="auto-style11"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Inscripcion ID:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbx_INSCRIPCIONES" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_Inscripcion_ID" runat="server" ControlToValidate="tbx_INSCRIPCIONES" ErrorMessage="Ingrese una inscripción existente" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Nombre:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbx_Nombre" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbx_Nombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Anio:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbx_Anio" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_Anio" runat="server" ControlToValidate="tbx_Anio" ErrorMessage="Ingrese un Año" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Estado:</td>
+                    <td class="auto-style6">
+                        <asp:DropDownList ID="tbx_Estado" runat="server">
+                            <asp:ListItem>Espera</asp:ListItem>
+                            <asp:ListItem>Abierta</asp:ListItem>
+                            <asp:ListItem>Cerrado</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RFV_Estado" runat="server" ControlToValidate="tbx_Estado" ErrorMessage="Ingrese un Estado" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Fecha Inicio:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbx_FechaInicio" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_FechaInicio" runat="server" ControlToValidate="tbx_FechaInicio" ErrorMessage="Ingrese una fecha Inicio" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">Fecha Fin:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="tbx_FechaFin" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFV_FechaFin" runat="server" ControlToValidate="tbx_FechaFin" ErrorMessage="Ingrese una Fecha Fin" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <asp:Button ID="btn_aceptar" runat="server" CssClass="auto-style7" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
         </div>
     </form>
 </body>

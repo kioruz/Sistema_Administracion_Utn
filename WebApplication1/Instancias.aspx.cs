@@ -11,8 +11,11 @@ namespace WebApplication1
 {
     public partial class Instancias : System.Web.UI.Page
     {
+        NEGInstancias negins = new NEGInstancias();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
             Usuarios usuario = (Usuarios)Session["Usuario"];
 
             if (usuario == null)
@@ -30,8 +33,7 @@ namespace WebApplication1
 
         public void CargarTabla()
         {
-            NEGInstancias NEGINS = new NEGInstancias();
-            gv.DataSource = NEGINS.GetTable();
+            gv.DataSource = negins.GetTable();
             gv.DataBind();
         }
 
@@ -46,44 +48,17 @@ namespace WebApplication1
             gv.EditIndex = e.NewEditIndex;
             CargarTabla();
         }
-
-        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("AddNew"))
-            {
-                NEGInstancias negins = new NEGInstancias();
-                //TextBox txtid = (TextBox)gv.FooterRow.FindControl("txtId");
-                TextBox t1 = (TextBox)gv.FooterRow.FindControl("txtINSCRIPCIONES_Id");
-                TextBox t2 = (TextBox)gv.FooterRow.FindControl("txtNombre");
-                TextBox t3 = (TextBox)gv.FooterRow.FindControl("txtIdinscripcion");
-                TextBox t4 = (TextBox)gv.FooterRow.FindControl("txtAnio");
-                TextBox t5 = (TextBox)gv.FooterRow.FindControl("txtNroinscripcion");
-                TextBox t6 = (TextBox)gv.FooterRow.FindControl("txtEstado");
-                TextBox t7 = (TextBox)gv.FooterRow.FindControl("txtFechainicio");
-                TextBox t8 = (TextBox)gv.FooterRow.FindControl("txtFechafin");
-                
-
-
-                negins.AgregarInstancia(t1.Text , t2.Text, t3.Text, t4.Text, t5.Text, t6.Text, t7.Text, t8.Text);
-
-                CargarTabla();
-            }
-        }
         protected void gv_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            NEGInstancias negins = new NEGInstancias();
-     
-            Label l1 = gv.Rows[e.RowIndex].FindControl("lblid") as Label;
-            TextBox t1 = gv.Rows[e.RowIndex].FindControl("txtINSCRIPCIONES_Id") as TextBox;
-            TextBox t2 = gv.Rows[e.RowIndex].FindControl("txtNombre") as TextBox;
-            TextBox t3 = gv.Rows[e.RowIndex].FindControl("txtIdinscripcion") as TextBox;
-            TextBox t4 = gv.Rows[e.RowIndex].FindControl("txtAnio") as TextBox;
-            TextBox t5 = gv.Rows[e.RowIndex].FindControl("txtNroinscripcion") as TextBox;
-            TextBox t6 = gv.Rows[e.RowIndex].FindControl("txtEstado") as TextBox;
-            TextBox t7 = gv.Rows[e.RowIndex].FindControl("txtFechainicio") as TextBox;
-            TextBox t8 = gv.Rows[e.RowIndex].FindControl("txtFechafin") as TextBox;
+            Label l1 = gv.Rows[e.RowIndex].FindControl("lbl_ID") as Label;
+            Label l2 = gv.Rows[e.RowIndex].FindControl("tbx_Inscripcion_ID") as Label;
+            TextBox t2 = gv.Rows[e.RowIndex].FindControl("tbxNombre") as TextBox;
+            TextBox t3 = gv.Rows[e.RowIndex].FindControl("tbxAnio") as TextBox;
+            DropDownList t4 = gv.Rows[e.RowIndex].FindControl("tbx_Estado") as DropDownList;
+            TextBox t5 = gv.Rows[e.RowIndex].FindControl("tbxFechainicio") as TextBox;
+            TextBox t6 = gv.Rows[e.RowIndex].FindControl("tbxFechafin") as TextBox;
           
-            negins.ActualizarTabla(l1.Text, t1.Text, t2.Text, t3.Text, int.Parse(t4.Text), t5.Text, t6.Text, t7.Text, t8.Text);
+            negins.ActualizarTabla(l1.Text, l2.Text, t2.Text, t3.Text, t4.SelectedValue, t5.Text, t6.Text);
             gv.EditIndex = -1;
             CargarTabla();
         }
@@ -92,14 +67,11 @@ namespace WebApplication1
             Response.Redirect("Inicio.aspx");
         }
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
+        protected void btn_aceptar_Click(object sender, EventArgs e)
         {
+            negins.AgregarInstancia(tbx_INSCRIPCIONES.Text, tbx_Nombre.Text, tbx_Anio.Text, tbx_Estado.SelectedValue, tbx_FechaInicio.Text, tbx_FechaFin.Text);
 
-        }
-
-        protected void gv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            CargarTabla();
         }
     }
 }
