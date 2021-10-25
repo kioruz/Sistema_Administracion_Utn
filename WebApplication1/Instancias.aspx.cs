@@ -66,12 +66,17 @@ namespace WebApplication1
         {
             Response.Redirect("Inicio.aspx");
         }
-
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
             negins.AgregarInstancia(tbx_INSCRIPCIONES.Text, tbx_Nombre.Text, tbx_Anio.Text, tbx_Estado.SelectedValue, tbx_FechaInicio.Text, tbx_FechaFin.Text);
 
             CargarTabla();
+        }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
+            Response.Redirect("Login.aspx");
         }
     }
 }

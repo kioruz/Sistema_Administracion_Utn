@@ -57,10 +57,15 @@ namespace WebApplication1
             gvUsuarios.EditIndex = -1;
             CargarTabla();
         }
-
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx");
+        }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
+            Response.Redirect("Login.aspx");
         }
     }
 }

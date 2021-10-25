@@ -12,6 +12,7 @@
         <div>
             <div class="auto-style1">
             <asp:Button ID="btnVolver0" runat="server" OnClick="btnVolver_Click" style="text-align: left" Text="Volver" />
+            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
             <p style="margin-left: 920px">
             Usuario:
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>

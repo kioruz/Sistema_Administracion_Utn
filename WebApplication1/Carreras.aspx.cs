@@ -68,12 +68,17 @@ namespace WebApplication1
             gvCarreras.EditIndex = -1;
             CargarTabla();
         }
-
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
             Carrera.AgregarCarrera(tbxINSCRIPCIONES.Text, tbx_Tipos_Carreras.Text, tbxNombre.Text, tbxCodigoInterno.Text);
             
             CargarTabla();
+        }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
+            Response.Redirect("Login.aspx");
         }
     }
 }

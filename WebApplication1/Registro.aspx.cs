@@ -45,9 +45,14 @@ namespace WebApplication1
                 tbx_PassRepetida.Text = "";
             }
         }
-
         protected void btn_Inicio_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Login.aspx");
+        }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
             Response.Redirect("Login.aspx");
         }
     }

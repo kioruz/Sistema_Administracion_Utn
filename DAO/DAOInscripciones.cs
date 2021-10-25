@@ -23,7 +23,7 @@ namespace DAO
         }
         public int Insertar(Inscripciones ins)
         {
-            NpgsqlCommand com = new NpgsqlCommand("call insertar_INSCRIPCION(:p_nombre)");
+            NpgsqlCommand com = new NpgsqlCommand("call insertar_INSCRIPCIONES(:p_nombre)");
             com.Parameters.Add("p_nombre", NpgsqlDbType.Varchar, 255).Value = ins.Nombre;
             return ds.EjecutarProcedimientoAlmacenado(com, "insertar_INSCRIPCION");
         }

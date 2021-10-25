@@ -17,6 +17,7 @@
         <div>
             <p>
             <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
+            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
             </p>
 
             <p style="margin-left: 920px">

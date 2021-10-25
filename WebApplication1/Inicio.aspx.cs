@@ -22,5 +22,11 @@ namespace WebApplication1
 
             lblNombreUsuario.Text = usuario.Usuario;
         }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
+            Response.Redirect("Login.aspx");
+        }
     }
 }

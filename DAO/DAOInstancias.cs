@@ -35,7 +35,6 @@ namespace DAO
             com.Parameters.Add("p_fechafin", NpgsqlDbType.Date).Value = DateTime.Parse(ins.FechaFin).Date;
 
             return ds.EjecutarProcedimientoAlmacenado(com, "insertar_INSTANCIAS");
-
         }
 
         public int Actualizar(Instancias ins)

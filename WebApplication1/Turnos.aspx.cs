@@ -71,5 +71,11 @@ namespace WebApplication1
 
             CargarTabla();
         }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
+            Response.Redirect("Login.aspx");
+        }
     }
 }

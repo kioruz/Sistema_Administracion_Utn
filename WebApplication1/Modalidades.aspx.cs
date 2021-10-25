@@ -67,7 +67,6 @@ namespace WebApplication1
         {
             Response.Redirect("Inicio.aspx");
         }
-
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
             NEGModalidades modalidades = new NEGModalidades();
@@ -75,6 +74,12 @@ namespace WebApplication1
             modalidades.AgregarModalidad(tbxNombre.Text);
 
             CargarTabla();
+        }
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+
+            Response.Redirect("Login.aspx");
         }
     }
 }

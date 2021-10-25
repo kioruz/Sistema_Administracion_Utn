@@ -28,17 +28,8 @@
         .auto-style6 {
             height: 26px;
         }
-        .auto-style4 {
-            width: 146px;
-            text-align: right;
-        }
         .auto-style12 {
-            width: 146px;
-            text-align: right;
-            height: 30px;
-        }
-        .auto-style13 {
-            height: 30px;
+            margin-left: 760px;
         }
     </style>
 </head>
@@ -47,11 +38,12 @@
         <div>
             <p>
             <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
+            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
             </p>
-            <p style="margin-left: 920px">
+            <p class="auto-style12">
             Usuario:
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-            </p>
+            &nbsp;</p>
         </div>
             <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" AllowSorting="True">
                 <Columns>
