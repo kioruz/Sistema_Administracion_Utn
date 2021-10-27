@@ -6,16 +6,98 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link type="text/css" rel="stylesheet" href="Css/FontFamily.css"/>
+    <style>
+        .boton{
+            background-color: #1c819f;
+            color: white;
+            padding: 5px 10px; 
+            cursor: pointer;
+            border-radius: 50px;
+            border: none; 
+           
+            transition: 0.5s;
+
+            /*Agregados(Para que así se vea bien, originalmente la clase contiene lo de arriba nada más)*/
+            margin: 0px 5px;
+        }
+
+        .centrarVertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .centrarHorizontal{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .spaceAround{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            min-width: 1200px;
+        }
+
+         .usuarioActual{
+            font-weight: bold;
+        }
+
+         .conteinerAgregar{
+             border: 1px solid #000;
+             padding: 5px;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+      
+         /*tr = fila */
+         /*auto-style6 = conteinerInput / error input */
+        .auto-style6{
+            display: flex;
+            flex-direction: column;
+        }
+        tr{
+            display: flex;
+            flex-direction: row;
+           justify-content: space-between;
+        }
+
+        td{
+            width: 50%;
+        }
+
+        .inputTamanio{
+            width: 95%;
+        }
+
+
+        /*Titulo de la tabla*/
+        .tituloTable{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auto-style3{
+             width: 100%;
+        }
+        /*Fin Titulo de la tabla*/
+
+    </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="centrarVertical">
         <div>
-            <div class="auto-style1">
-            <asp:Button ID="btnVolver0" runat="server" OnClick="btnVolver_Click" style="text-align: left" Text="Volver" />
-            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
-            <p style="margin-left: 920px">
+            <div class="spaceAround">
+                <div class="centrarHorizontal">
+                     <asp:Button ID="btnVolver0" CssClass="boton" runat="server" OnClick="btnVolver_Click"  Text="Volver" />
+            <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click"  Text="Cerrar Sesión" />
+                </div>
+            <p>
             Usuario:
-            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+            <asp:Label ID="lblNombreUsuario" runat="server" CssClass="usuarioActual"></asp:Label>
             </p>
             </div>
             <br />
@@ -145,40 +227,40 @@
             <br />
             
         </div>
-        <div>
+        <div class="conteinerAgregar">
             <br />
             <br />
             <br />
-            <table class="auto-style1">
-                <tr>
+            <table class="tablaAgregar">
+                <tr class="tituloTable">
                     <td class="auto-style3"><strong>Agregar Carrera</strong></td>
-                    <td class="auto-style11"></td>
+                    
                 </tr>
                 <tr>
                     <td class="auto-style5">Inscripcion ID:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="tbx_INSCRIPCIONES" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbx_INSCRIPCIONES" runat="server" CssClass="inputTamanio"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_Inscripcion_ID" runat="server" ControlToValidate="tbx_INSCRIPCIONES" ErrorMessage="Ingrese una inscripción existente" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style5">Nombre:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="tbx_Nombre" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbx_Nombre" runat="server" CssClass="inputTamanio"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbx_Nombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style5">Anio:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="tbx_Anio" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbx_Anio" runat="server" CssClass="inputTamanio"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_Anio" runat="server" ControlToValidate="tbx_Anio" ErrorMessage="Ingrese un Año" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style5">Estado:</td>
                     <td class="auto-style6">
-                        <asp:DropDownList ID="tbx_Estado" runat="server">
+                        <asp:DropDownList ID="tbx_Estado" runat="server" CssClass="inputTamanio">
                             <asp:ListItem>Espera</asp:ListItem>
                             <asp:ListItem>Abierta</asp:ListItem>
                             <asp:ListItem>Cerrado</asp:ListItem>
@@ -189,21 +271,21 @@
                 <tr>
                     <td class="auto-style5">Fecha Inicio:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="tbx_FechaInicio" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="tbx_FechaInicio" runat="server" TextMode="Date" CssClass="inputTamanio"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_FechaInicio" runat="server" ControlToValidate="tbx_FechaInicio" ErrorMessage="Ingrese una fecha Inicio" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style5">Fecha Fin:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="tbx_FechaFin" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="tbx_FechaFin" runat="server" TextMode="Date" CssClass="inputTamanio"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_FechaFin" runat="server" ControlToValidate="tbx_FechaFin" ErrorMessage="Ingrese una Fecha Fin" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
             </table>
             <br />
             <br />
-            <asp:Button ID="btn_aceptar" runat="server" CssClass="auto-style7" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
+            <asp:Button ID="btn_aceptar" runat="server" CssClass="boton" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
         </div>
     </form>
 </body>

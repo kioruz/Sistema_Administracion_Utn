@@ -71,6 +71,7 @@
     <Content Include="Carreras.aspx" />
     <Content Include="ControlUsuarios.aspx" />
     <Content Include="Css\Estilos.css" />
+    <Content Include="Css\FontFamily.css" />
     <Content Include="Inicio.aspx" />
     <Content Include="Inscripciones.aspx" />
     <Content Include="Instancias.aspx" />
