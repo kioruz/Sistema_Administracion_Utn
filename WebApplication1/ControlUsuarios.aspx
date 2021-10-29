@@ -4,27 +4,50 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="Css/Estilos.css" />
 </head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
-            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            Usuario:
-            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-            <br />
-            <br />
-            <br />
-            <br />
+<body class="flex-body">
+    <header class="header">
+        <div class="header-container">
+            <div class="header-item">
+                <a href="#">
+                    <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
+                </a>
+            </div>
+            <div class="header-item">
+                <h2>Sistema de Administración Web</h2>
+            </div>
+        </div>
+    </header>
+    <main class="flex-main">
+        <form id="form1" runat="server">
+            <div class="flex-form">
+                <div class="nav">
+                    <div>
+                        <asp:Button ID="btnVolver" CssClass="boton" runat="server" OnClick="btnVolver_Click" Style="text-align: center" Text="Volver" />
+                        <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Style="text-align: center" Text="Cerrar Sesión" />
+                    </div>
+                    <div>
+                        Usuario:
+                    <asp:Label ID="lblNombreUsuario" Font-Bold="true" runat="server"></asp:Label>
+                    </div>
+
+                </div>
+                <div>
+                    <h1 class="titulo">Control Usuarios</h1>
+                </div>
+                <div>
+                    <hr class="hr" />
+                </div>
             <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
                 <Columns>
                     <asp:TemplateField HeaderText="Editar">
                         <EditItemTemplate>
-                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" text="Update" />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" text="Cancel" />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandName="Edit" />
@@ -89,8 +112,14 @@
                 <SortedDescendingCellStyle BackColor="#F1E5CE" />
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
-            <br />
+            </div>
+        </form>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <hr class="hr" />
+            <span class="copyright">Copyright © 2021 Universidad Tecnológica Nacional</span>
         </div>
-    </form>
+    </footer>
 </body>
 </html>

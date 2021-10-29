@@ -31,9 +31,27 @@
     height:100vh;
     display:flex;
     flex-flow:column nowrap;
+    row-gap:20px;
 }
 .flex-main{
     flex-grow:1;
+}
+.nav{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-content:center;
+}
+.boton {
+    background-color: #1c819f;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    transition: 0.5s;
+    /*Agregados(Para que así se vea bien, originalmente la clase contiene lo de arriba nada más)*/
+    margin: 0px 5px;
 }
 .flex-form {
     display: flex;
@@ -41,13 +59,10 @@
     align-items: stretch;
     align-content: space-around;
     justify-content: center;
+    row-gap:20px;
 }
 .titulo {
-    min-width: 255px;
-    display: flex;
-    justify-content: center;
-    margin-bottom:40px;
-    margin-top:20px;
+    text-align:center;
 }
 .hr{
     width:100%;
@@ -120,7 +135,6 @@
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 10px;
-    margin-top:10px;
 }
 .footer-container{
     width:70%;
