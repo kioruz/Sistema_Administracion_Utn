@@ -4,40 +4,43 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<link type="text/css" rel="stylesheet" href="Css/FontFamily.css"/>
-<link type="text/css" rel="stylesheet" href="Css/Estilos.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="Css/FontFamily.css" />
+    <link type="text/css" rel="stylesheet" href="Css/Estilos.css" />
     <style type="text/css">
-
         .tablaAgregar {
             width: 100%;
-
         }
+
         .auto-style3 {
             width: 300px;
             font-size: x-large;
             text-align: center;
             height: 56px;
         }
+
         .auto-style11 {
             height: 56px;
         }
+
         .auto-style5 {
             width: 146px;
             height: 26px;
             text-align: right;
         }
+
         .auto-style6 {
             height: 26px;
         }
+
         .auto-style12 {
             margin-left: 760px;
         }
 
 
-        body{
+        body {
             background-color: #fcfcfc;
         }
 
@@ -47,54 +50,53 @@
             align-items: center;
         }
 
-        .spaceAround{
+        .spaceAround {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             min-width: 1200px;
         }
-        
-        #form1{
+
+        #form1 {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
-        .boton{
+
+        .boton {
             background-color: #1c819f;
             color: white;
-            padding: 5px 10px; 
+            padding: 5px 10px;
             cursor: pointer;
             border-radius: 50px;
-            border: none; 
-           
+            border: none;
             transition: 0.5s;
         }
-    
-        .aceptar:hover{
+
+        .aceptar:hover {
             color: lightgreen;
         }
 
 
-        .conteinerAgregar{
+        .conteinerAgregar {
             border: 1px solid #000;
             padding: 10px;
         }
 
-        .usuarioActual{
+        .usuarioActual {
             font-weight: bold;
         }
-        
-        #tbxNombre{
+
+        #tbxNombre {
             padding: 5px;
         }
 
-        .inputEditar{
+        .inputEditar {
             padding: 5px;
         }
     </style>
 </head>
-<body>
+<body class="flex-body">
     <header class="header">
         <div class="header-container">
             <div class="header-item">
@@ -107,29 +109,31 @@
             </div>
         </div>
     </header>
-    <form id="form1" runat="server" class="centrarVertical">
-        <div class="spaceAround">
-            <p>
-            <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click"  Text="Volver" class="boton"/>
-            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" class="boton" />
-            </p>
-            <p >
-            Usuario:
+    <main class="flex-main">
+        <form id="form1" runat="server" class="centrarVertical">
+            <div class="spaceAround">
+                <p>
+                    <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" Text="Volver" class="boton" />
+                    <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" class="boton" />
+                </p>
+                <p>
+                    Usuario:
             <asp:Label ID="lblNombreUsuario" runat="server" CssClass="usuarioActual"></asp:Label>
-            &nbsp;</p>
-        </div>
+                    &nbsp;
+                </p>
+            </div>
             <asp:GridView ID="gv" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" AutoGenerateColumns="False" AllowSorting="True">
                 <Columns>
                     <asp:TemplateField HeaderText="Controles">
 
                         <ItemTemplate>
 
-                            <asp:Button text="Editar" ID ="Editbutton" CssClass="botonGrid" runat="server" CommandName="Edit" />
+                            <asp:Button Text="Editar" ID="Editbutton" CssClass="botonGrid" runat="server" CommandName="Edit" />
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                               <asp:Button text="Update" ID ="UpdateButton" CssClass="botonGrid" runat="server" CommandName="Update" />
-                               <asp:Button text="Cancel" ID ="CancelButton" CssClass="botonGrid" runat="server" CommandName="Cancel" />
+                            <asp:Button Text="Update" ID="UpdateButton" CssClass="botonGrid" runat="server" CommandName="Update" />
+                            <asp:Button Text="Cancel" ID="CancelButton" CssClass="botonGrid" runat="server" CommandName="Cancel" />
 
 
                         </EditItemTemplate>
@@ -158,37 +162,37 @@
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbxNombre" runat="server" CssClass="inputEditar" Text ='<%# Eval("Nombre") %>' />
+                            <asp:TextBox ID="tbxNombre" runat="server" CssClass="inputEditar" Text='<%# Eval("Nombre") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Fecha">
-                         <FooterTemplate>
-                             <asp:TextBox ID="txtFecha" runat="server"></asp:TextBox>
-                         </FooterTemplate>
+                    <asp:TemplateField HeaderText="Fecha">
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtFecha" runat="server"></asp:TextBox>
+                        </FooterTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lblFecha" runat="server"   Text='<%# Eval("Fechabaja","{0:dd/MM/yyyy}") %>' />
+                            <asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fechabaja","{0:dd/MM/yyyy}") %>' />
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbxFechabaja" runat="server" CssClass="inputEditar"  Text ='<%# Eval("Fechabaja") %>' />
+                            <asp:TextBox ID="tbxFechabaja" runat="server" CssClass="inputEditar" Text='<%# Eval("Fechabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Causabaja">
-                         <FooterTemplate>
-                             <asp:TextBox ID="txtCausabaja" runat="server"></asp:TextBox>
-                         </FooterTemplate>
+                    <asp:TemplateField HeaderText="Causabaja">
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtCausabaja" runat="server"></asp:TextBox>
+                        </FooterTemplate>
                         <ItemTemplate>
                             <asp:Label ID="lblCausabaja" runat="server" Text='<%# Eval("Causabaja") %>' />
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbxCausabaja" runat="server" CssClass="inputEditar" Text ='<%# Eval("Causabaja") %>' />
+                            <asp:TextBox ID="tbxCausabaja" runat="server" CssClass="inputEditar" Text='<%# Eval("Causabaja") %>' />
                         </EditItemTemplate>
                     </asp:TemplateField>
-                     
-                   
 
-           
+
+
+
                 </Columns>
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                 <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
@@ -200,28 +204,30 @@
                 <SortedDescendingCellStyle BackColor="#F1E5CE" />
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
-        <p>
-            &nbsp;</p>
-        <div class="centrarVertical conteinerAgregar">
-            <table class="centrarVertical tablaAgregar">
-                <tr class="centrarVertical">
-                    <td class="auto-style3"><strong>Agregar Inscripción</strong></td>
-                    <td class="auto-style11"></td>
-                </tr>
-                <tr>
-                    <td class="auto-style5">Nombre:</td>
-                    <td class="auto-style6">
-                        <asp:TextBox ID="tbxNombre" runat="server" placeholder="Su nombre"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <br />
-            <asp:Button ID="btn_aceptar" runat="server" CssClass="boton aceptar" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
-        </div>
-    </form>
-     <footer class="footer">
+            <p>
+                &nbsp;
+            </p>
+            <div class="centrarVertical conteinerAgregar">
+                <table class="centrarVertical tablaAgregar">
+                    <tr class="centrarVertical">
+                        <td class="auto-style3"><strong>Agregar Inscripción</strong></td>
+                        <td class="auto-style11"></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">Nombre:</td>
+                        <td class="auto-style6">
+                            <asp:TextBox ID="tbxNombre" runat="server" placeholder="Su nombre"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+                <asp:Button ID="btn_aceptar" runat="server" CssClass="boton aceptar" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
+            </div>
+        </form>
+    </main>
+    <footer class="footer">
         <div class="footer-container">
             <hr class="hr" />
             <span class="copyright">Copyright © 2021 Universidad Tecnológica Nacional</span>
