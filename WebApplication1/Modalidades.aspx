@@ -5,14 +5,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="Css/Estilos.css" />
     <title></title>
 </head>
 <body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-item">
+                <a href="#">
+                    <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
+                </a>
+            </div>
+            <div class="header-item">
+                <h2>Sistema de Administración Web</h2>
+            </div>
+        </div>
+    </header>
     <form id="form1" runat="server">
         <div>
             <p>
-            <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
-            <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
+            <asp:Button ID="btnVolver" CssClass="boton" runat="server" OnClick="btnVolver_Click" style="text-align: center" Text="Volver" />
+            <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
             </p>
             <p style="margin-left: 920px">
             Usuario:
@@ -25,12 +38,12 @@
 
                         <ItemTemplate>
 
-                            <asp:Button text="Editar" ID ="Editbutton" runat="server" CommandName="Edit" />
+                            <asp:Button text="Editar" ID ="Editbutton" CssClass="botonGrid" runat="server" CommandName="Edit" />
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                               <asp:Button text="Update" ID ="UpdateButton" runat="server" CommandName="Update" />
-                               <asp:Button text="Cancel" ID ="CancelButton" runat="server" CommandName="Cancel" />
+                               <asp:Button text="Update" ID ="UpdateButton" CssClass="botonGrid" runat="server" CommandName="Update" />
+                               <asp:Button text="Cancel" ID ="CancelButton" CssClass="botonGrid" runat="server" CommandName="Cancel" />
 
 
                         </EditItemTemplate>
@@ -119,8 +132,14 @@
             </table>
             <br />
             <br />
-            <asp:Button ID="btn_aceptar" runat="server" CssClass="auto-style7" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
+            <asp:Button ID="btn_aceptar" CssClass="boton" runat="server" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
         </div>
     </form>
+    <footer class="footer">
+        <div class="footer-container">
+            <hr class="hr" />
+            <span class="copyright">Copyright © 2021 Universidad Tecnológica Nacional</span>
+        </div>
+    </footer>
 </body>
 </html>

@@ -53,6 +53,21 @@
     /*Agregados(Para que así se vea bien, originalmente la clase contiene lo de arriba nada más)*/
     margin: 0px 5px;
 }
+.botonGrid {
+    background-color: #A64B32;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    transition: 0.5s;
+    /*Agregados(Para que así se vea bien, originalmente la clase contiene lo de arriba nada más)*/
+    margin: 0px 5px;
+}
+
+    .botonGrid:hover {
+        background-color: #D56141;
+    }
 .flex-form {
     display: flex;
     flex-flow: column wrap;

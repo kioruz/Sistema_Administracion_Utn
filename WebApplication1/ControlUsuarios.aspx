@@ -46,11 +46,11 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Editar">
                         <EditItemTemplate>
-                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                            <asp:Button ID="UpdateButton" CssClass="botonGrid" runat="server" CommandName="Update" Text="Update" />
+                            <asp:Button ID="CancelButton" CssClass="botonGrid" runat="server" CommandName="Cancel" Text="Cancel" />
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandName="Edit" />
+                            <asp:Button ID="btnEditar" CssClass="botonGrid" runat="server" Text="Editar" CommandName="Edit" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Usuario">

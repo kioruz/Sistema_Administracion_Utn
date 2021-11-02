@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="Css/Estilos.css" />
     <title></title>
     <style type="text/css">
         .auto-style1 {
@@ -13,6 +14,18 @@
     </style>
 </head>
 <body>
+     <header class="header">
+        <div class="header-container">
+            <div class="header-item">
+                <a href="#">
+                    <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
+                </a>
+            </div>
+            <div class="header-item">
+                <h2>Sistema de Administración Web</h2>
+            </div>
+        </div>
+    </header>
     <form id="form1" runat="server">
         <div>
             <asp:Menu ID="Menu1" runat="server" BackColor="#CCFFFF" DynamicHorizontalOffset="2" EnableTheming="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="16px" style="text-align: left; font-size: xx-large" >
@@ -35,12 +48,18 @@
                 </Items>
                 <StaticMenuStyle HorizontalPadding="20px" VerticalPadding="20px" />
             </asp:Menu>
-        &nbsp;&nbsp;&nbsp;<asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
+        &nbsp;&nbsp;&nbsp;<asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" style="text-align: center" Text="Cerrar Sesión" />
             &nbsp;<p class="auto-style1">
             Usuario:
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
             </p>
         </div>
     </form>
+     <footer class="footer">
+        <div class="footer-container">
+            <hr class="hr" />
+            <span class="copyright">Copyright © 2021 Universidad Tecnológica Nacional</span>
+        </div>
+    </footer>
 </body>
 </html>

@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link type="text/css" rel="stylesheet" href="Css/FontFamily.css"/>
-    <style>
+        <link type="text/css" rel="stylesheet" href="Css/Estilos.css"/>
+<%--    <style>
         .boton{
             background-color: #1c819f;
             color: white;
@@ -85,9 +86,21 @@
         }
         /*Fin Titulo de la tabla*/
 
-    </style>
+    </style>--%>
 </head>
 <body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-item">
+                <a href="#">
+                    <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
+                </a>
+            </div>
+            <div class="header-item">
+                <h2>Sistema de Administración Web</h2>
+            </div>
+        </div>
+    </header>
     <form id="form1" runat="server" class="centrarVertical">
         <div>
             <div class="spaceAround">
@@ -107,12 +120,12 @@
 
                         <ItemTemplate>
 
-                            <asp:Button text="Editar" ID ="Editbutton" runat="server" CommandName="Edit" />
+                            <asp:Button text="Editar" ID ="Editbutton" CssClass="botonGrid" runat="server" CommandName="Edit" />
 
                         </ItemTemplate>
                         <EditItemTemplate>
-                               <asp:Button text="Update" ID ="UpdateButton" runat="server" CommandName="Update" />
-                               <asp:Button text="Cancel" ID ="CancelButton" runat="server" CommandName="Cancel" />
+                               <asp:Button text="Update" ID ="UpdateButton" CssClass="botonGrid" runat="server" CommandName="Update" />
+                               <asp:Button text="Cancel" ID ="CancelButton" CssClass="botonGrid" runat="server" CommandName="Cancel" />
 
 
                         </EditItemTemplate>
@@ -288,6 +301,12 @@
             <asp:Button ID="btn_aceptar" runat="server" CssClass="boton" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />
         </div>
     </form>
+     <footer class="footer">
+        <div class="footer-container">
+            <hr class="hr" />
+            <span class="copyright">Copyright © 2021 Universidad Tecnológica Nacional</span>
+        </div>
+    </footer>
 </body>
 </html>
 
