@@ -85,7 +85,7 @@
 .rows{
     display:flex;
     flex-flow:row wrap;
-    column-gap:20px;
+    column-gap:30px;
 }
 .col{
     display:flex;
@@ -97,7 +97,7 @@
     flex-flow: column wrap;
     row-gap: 10px;
     height:100px;
-    min-width:200px;
+    min-width:250px;
     margin: 10px;
     justify-content:space-evenly;
 }

@@ -51,8 +51,8 @@
                     </Items>
                     <StaticMenuStyle HorizontalPadding="20px" VerticalPadding="20px" />
                 </asp:Menu>
-                &nbsp;&nbsp;&nbsp;<asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Style="text-align: center" Text="Cerrar Sesión" />
-                &nbsp;<p class="auto-style1">
+                <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Style="text-align: center" Text="Cerrar Sesión" />
+                <p class="auto-style1">
                     Usuario:
             <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
                 </p>
