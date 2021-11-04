@@ -119,7 +119,7 @@
                         <div class="form-textbox">
                             <label for="tbxNombre">Nombre:</label>
                             <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RFV_Nombre" CssClass="label-error" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-btn">
                             <asp:Button ID="btn_aceptar" CssClass="boton" runat="server" OnClick="btn_aceptar_Click" Text="Agregar" ValidationGroup="grupo2" Width="140px" />

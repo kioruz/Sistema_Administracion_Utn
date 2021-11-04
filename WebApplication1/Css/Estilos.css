@@ -41,6 +41,7 @@
     flex-direction:row;
     justify-content:space-between;
     align-content:center;
+    align-items:center;
 }
 .boton {
     background-color: #1c819f;
@@ -123,7 +124,6 @@
     box-shadow: 3px 0px 20px #1c819f;
 }
 .msj-error{
-    height:10px;
     color:red;
     display:flex;
     flex-flow:column wrap;

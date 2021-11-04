@@ -94,7 +94,6 @@
                                     </FooterTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lblCausabaja" runat="server" Text='<%# Eval("Causabaja") %>' />
-
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbxCausabaja" runat="server" Text='<%# Eval("Causabaja") %>' />
@@ -121,7 +120,7 @@
                         </div>
                         <div class="form-textbox">
                             <label for="tbxNombre">Nombre:</label>
-                            <asp:TextBox ID="tbxNombre" CssClass="textbox" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RFV_Nombre" CssClass="label-error" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-btn">

@@ -128,24 +128,32 @@
                         <div>
                             <hr class="hr" />
                         </div>
-                        <div class="form-textbox">
+                        <div >
                             <label for="tbxINSCRIPCIONES">Inscripcion ID:</label>
                             <asp:TextBox ID="tbxINSCRIPCIONES" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_Inscripcion_ID" runat="server" ControlToValidate="tbxINSCRIPCIONES" ErrorMessage="Ingrese una inscripción existente" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="label-error">
+                            <asp:RequiredFieldValidator ID="RFV_Inscripcion_ID" CssClass="label-error" runat="server" ControlToValidate="tbxINSCRIPCIONES" ErrorMessage="Ingrese una inscripción existente" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="form-textbox">
+                        <div >
                             <label for="tbx_Tipos_Carreras">Tipo carrera ID:</label>
                             <asp:TextBox ID="tbx_Tipos_Carreras" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_Tipo_Carreras_ID" runat="server" ControlToValidate="tbx_Tipos_Carreras" ErrorMessage="Ingrese un Tipo de Carrera Existente" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="label-error">
+                            <asp:RequiredFieldValidator ID="RFV_Tipo_Carreras_ID" CssClass="label-error" runat="server" ControlToValidate="tbx_Tipos_Carreras" ErrorMessage="Ingrese un Tipo de Carrera Existente" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="form-textbox">
+                        <div >
                             <label for="tbxNombre">Nombre:</label>
                             <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="label-error">
+                            <asp:RequiredFieldValidator ID="RFV_Nombre" CssClass="label-error" runat="server" ControlToValidate="tbxNombre" ErrorMessage="Ingrese un Nombre" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="form-textbox">
+                        <div >
                             <label for="tbxCodigoInterno">CodigoInterno:</label>
                             <asp:TextBox ID="tbxCodigoInterno" runat="server"></asp:TextBox>
+                            </div>
+                        <div class="label-error">
                             <asp:RequiredFieldValidator ID="RFV_CodigoInterno" runat="server" ControlToValidate="tbxCodigoInterno" ErrorMessage="Ingrese un Código Interno" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-btn">

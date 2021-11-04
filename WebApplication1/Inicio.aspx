@@ -30,8 +30,9 @@
     </header>
     <main class="flex-main">
         <form id="form1" runat="server">
-            <div>
-                <asp:Menu ID="Menu1" runat="server" BackColor="#CCFFFF" DynamicHorizontalOffset="2" EnableTheming="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="16px" Style="text-align: left; font-size: xx-large">
+                <div class="nav">     
+                    <div>
+                        <asp:Menu ID="Menu1" runat="server" BackColor="#CCFFFF" DynamicHorizontalOffset="2" EnableTheming="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="16px" Style="text-align: left; font-size: xx-large">
                     <DynamicHoverStyle BackColor="Aqua" />
                     <DynamicMenuStyle BackColor="#CCFFFF" HorizontalPadding="10px" VerticalPadding="10px" />
                     <Items>
@@ -51,12 +52,13 @@
                     </Items>
                     <StaticMenuStyle HorizontalPadding="20px" VerticalPadding="20px" />
                 </asp:Menu>
-                <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Style="text-align: center" Text="Cerrar Sesión" />
-                <p class="auto-style1">
-                    Usuario:
-            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-                </p>
-            </div>
+                    </div>
+                    <div>
+                        Usuario:
+                    <asp:Label ID="lblNombreUsuario" Font-Bold="true" runat="server"></asp:Label>
+                        <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" />
+                    </div>
+                </div>
         </form>
     </main>
     <footer class="footer">
