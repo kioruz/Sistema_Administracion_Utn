@@ -97,30 +97,28 @@
     </style>--%>
 </head>
 <body class="flex-body">
-    <header class="header">
-        <div class="header-container">
-            <div class="header-item">
-                <a href="#">
-                    <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
-                </a>
-            </div>
-            <div class="header-item">
-                <h2>Sistema de Administración Web</h2>
-            </div>
-        </div>
-    </header>
+    <form id="form1" runat="server" class="centrarVertical">>
+            <header class="header">
+                <div class="header-container">
+                    <div class="header-item">
+                        <a href="#">
+                            <img class="logo" alt="Logo UTN" src="Logo/logo-utn.png" />
+                        </a>
+                    </div>
+                    <div class="header-item">
+                        <h2>Sistema de Administración Web</h2>
+                    </div>
+                     <div>
+                         Usuario:
+                            <asp:Label ID="lblNombreUsuario" Font-Bold="true" runat="server"></asp:Label>
+                            <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" />
+                         <asp:Button ID="btnVolver" CssClass="boton" runat="server" OnClick="btnVolver_Click" Text="Volver" />
+                     </div>
+                </div>
+       </header>
     <main class="flex-main">
-        <form id="form1" runat="server" class="centrarVertical">
             <div class="flex-form">
                 <div class="nav">
-                    <div>
-                        <asp:Button ID="btnVolver" CssClass="boton" runat="server" OnClick="btnVolver_Click" Text="Volver" />
-                        <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" />
-                    </div>
-                    <div>
-                        Usuario:
-                    <asp:Label ID="lblNombreUsuario" Font-Bold="true" runat="server"></asp:Label>
-                    </div>
                 </div>
                 <div>
                     <h1 class="titulo">Inscripciones</h1>
@@ -213,8 +211,9 @@
                     </div>
                 </div>
             </div>
-        </form>
-    </main>
+         </main>
+       </form>
+
     <footer class="footer">
         <div class="footer-container">
             <hr class="hr" />
