@@ -69,14 +69,29 @@ namespace WebApplication1
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
             negins.AgregarInstancia(tbx_INSCRIPCIONES.Text, tbx_Nombre.Text, tbx_Anio.Text, tbx_Estado.SelectedValue, tbx_FechaInicio.Text, tbx_FechaFin.Text);
-
+            LimpiarTextBox();
             CargarTabla();
+        }
+        void LimpiarTextBox()
+        {
+            tbx_INSCRIPCIONES.Text = string.Empty;
+            tbx_Nombre.Text = string.Empty;
+            tbx_Anio.Text = string.Empty;
+            tbx_Estado.SelectedIndex = 0;
+            tbx_FechaInicio.Text = string.Empty;
+            tbx_FechaFin.Text = string.Empty;
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session["Usuario"] = null;
 
             Response.Redirect("Login.aspx");
+        }
+
+        protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv.PageIndex = e.NewPageIndex;
+            CargarTabla();
         }
     }
 }

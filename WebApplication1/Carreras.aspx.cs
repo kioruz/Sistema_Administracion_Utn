@@ -71,14 +71,27 @@ namespace WebApplication1
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
             Carrera.AgregarCarrera(tbxINSCRIPCIONES.Text, tbx_Tipos_Carreras.Text, tbxNombre.Text, tbxCodigoInterno.Text);
-            
+            LimpiarTextBox();
             CargarTabla();
+        }
+        void LimpiarTextBox()
+        {
+            tbxINSCRIPCIONES.Text = string.Empty;
+            tbx_Tipos_Carreras.Text = string.Empty;
+            tbxNombre.Text = string.Empty;
+            tbxCodigoInterno.Text = string.Empty;
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session["Usuario"] = null;
 
             Response.Redirect("Login.aspx");
+        }
+
+        protected void gvCarreras_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv.PageIndex = e.NewPageIndex;
+            CargarTabla();
         }
     }
 }

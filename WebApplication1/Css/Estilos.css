@@ -13,18 +13,19 @@
 }
 .header-container{
     height:80%;
-    width:90%;
+    width:95%;
     display:flex;
     flex-flow:row nowrap;
     justify-content:space-between;
 }
 .header-item{
     display:flex;
+    flex-wrap:wrap;
     align-items:center;
+    justify-content:flex-end;
 }
 .logo {
-    display: block;
-    width: 300px;
+    width: 280px;
     height:auto;
 }
 .flex-body{
@@ -39,8 +40,7 @@
 .nav{
     display:flex;
     flex-direction:row;
-    justify-content:space-between;
-    align-content:center;
+    justify-content:space-around;
     align-items:center;
 }
 .boton {
@@ -95,7 +95,7 @@
 .form-textbox {
     font-weight: bold;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     row-gap: 10px;
     height:100px;
     min-width:250px;

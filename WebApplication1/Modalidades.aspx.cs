@@ -72,7 +72,7 @@ namespace WebApplication1
             NEGModalidades modalidades = new NEGModalidades();
 
             modalidades.AgregarModalidad(tbxNombre.Text);
-
+            tbxNombre.Text = string.Empty;
             CargarTabla();
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -80,6 +80,12 @@ namespace WebApplication1
             Session["Usuario"] = null;
 
             Response.Redirect("Login.aspx");
+        }
+
+        protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv.PageIndex = e.NewPageIndex;
+            CargarTabla();
         }
     }
 }

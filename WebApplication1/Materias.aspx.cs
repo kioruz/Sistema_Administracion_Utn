@@ -71,7 +71,7 @@ namespace WebApplication1
             NEGMaterias materias = new NEGMaterias();
 
             materias.AgregarMateria(tbxNombre.Text);
-
+            tbxNombre.Text = string.Empty;
             CargarTabla();
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -79,6 +79,12 @@ namespace WebApplication1
             Session["Usuario"] = null;
 
             Response.Redirect("Login.aspx");
+        }
+
+        protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv.PageIndex = e.NewPageIndex;
+            CargarTabla();
         }
     }
 }

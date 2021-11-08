@@ -30,7 +30,9 @@ namespace WebApplication1
                 Usuarios user = usuario.login(username,pass);
                 if (user == null)
                 {
-                    Response.Write("<script language=javascript>alert('Credenciales invalidas.')</script>");
+                    lblUsuario.Text = "Ingreso una usuario o contraseña incorrecto.";
+                    tbxPassword.Text = string.Empty;
+                    tbxUser.Text = string.Empty;
                 }
                 else
                 {

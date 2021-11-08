@@ -76,6 +76,7 @@
     <Content Include="Inscripciones.aspx" />
     <Content Include="Instancias.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Logo\favicon-utn.ico" />
     <Content Include="Logo\logo-utn.png" />
     <Content Include="Materias.aspx" />
     <Content Include="Modalidades.aspx" />

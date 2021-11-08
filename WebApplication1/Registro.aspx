@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
+    <link type="text/css" rel="stylesheet" href="Css/FontFamily.css" />
     <link rel="stylesheet" href="Css/Estilos.css" />
 </head>
 <body class="flex-body">
@@ -18,7 +19,7 @@
                 </a>
             </div>
             <div class="header-item">
-                <h2>Sistema de Administración Web</h2>
+                <h2 class="titulo">Sistema de Administración Web</h2>
             </div>
         </div>
     </header>

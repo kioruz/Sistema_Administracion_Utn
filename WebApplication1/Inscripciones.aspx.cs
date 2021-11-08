@@ -68,7 +68,7 @@ namespace WebApplication1
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
             NegInc.AgregarInscripcion(tbxNombre.Text);
-
+            tbxNombre.Text = string.Empty;
             CargarTabla();
         }
 
@@ -77,6 +77,12 @@ namespace WebApplication1
             Session["Usuario"] = null;
 
             Response.Redirect("Login.aspx");
+        }
+
+        protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv.PageIndex = e.NewPageIndex;
+            CargarTabla();
         }
     }
 }
