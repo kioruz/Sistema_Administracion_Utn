@@ -72,7 +72,9 @@ namespace WebApplication1
             {
                 lbl_validacion.Text = "Ingrese un año valido";
             }
-            negins.AgregarInstancia(tbx_INSCRIPCIONES.Text, tbx_Nombre.Text, tbx_Anio.Text, tbx_Estado.SelectedValue, tbx_FechaInicio.Text, tbx_FechaFin.Text);
+            else{
+                negins.AgregarInstancia(tbx_INSCRIPCIONES.Text, tbx_Nombre.Text, tbx_Anio.Text, tbx_Estado.SelectedValue, tbx_FechaInicio.Text, tbx_FechaFin.Text);
+            }
             LimpiarTextBox();
             CargarTabla();
         }
