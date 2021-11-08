@@ -29,8 +29,8 @@
                             <asp:Label ID="lblNombreUsuario" Font-Bold="true" runat="server"></asp:Label>
                         </div>
                         <div class="form-btn">
-                            <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" />
                             <asp:Button ID="btnVolver" CssClass="boton" runat="server" OnClick="btnVolver_Click" Text="Volver" />
+                            <asp:Button ID="btnCerrarSesion" CssClass="boton" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" />
                         </div>
                     </div>
                 </div>
