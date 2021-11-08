@@ -20,7 +20,7 @@ namespace WebApplication1
         {
             if (tbxUser.Text.Trim().Length == 0 || tbxPassword.Text.Trim().Length == 0)
             {
-                lblUsuario.Text = "No se aceptan campos vacíos";
+                lblUsuario.Text = "No se aceptan campos vacíos.";
             }
             else
             {
@@ -30,7 +30,7 @@ namespace WebApplication1
                 Usuarios user = usuario.login(username,pass);
                 if (user == null)
                 {
-                    lblUsuario.Text = "Ingreso un usuario o contraseña incorrecto.";
+                    lblUsuario.Text = "Usuario y/o contraseña incorrecto.";
                     tbxPassword.Text = string.Empty;
                     tbxUser.Text = string.Empty;
                 }

@@ -90,7 +90,7 @@ namespace WebApplication1
 
         protected void gvCarreras_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gv.PageIndex = e.NewPageIndex;
+            gvCarreras.PageIndex = e.NewPageIndex;
             CargarTabla();
         }
     }

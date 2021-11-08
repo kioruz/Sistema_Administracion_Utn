@@ -45,7 +45,7 @@
                     <div>
                         <hr class="hr" />
                     </div>
-                    <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AllowPaging="True" PageSize="12" OnPageIndexChanging="gvUsuarios_PageIndexChanging">
+                    <asp:GridView ID="gvUsuarios" runat="server" OnRowCancelingEdit="gv_RowCancelingEdit" OnRowEditing="gv_RowEditing" OnRowUpdating="gv_RowUpdating" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AllowPaging="True" PageSize="12" OnPageIndexChanging="gvUsuarios_PageIndexChanging" AutoGenerateColumns="False">
                         <Columns>
                             <asp:TemplateField HeaderText="Editar">
                                 <EditItemTemplate>
