@@ -114,6 +114,24 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RFV_Anio;
 
         /// <summary>
+        /// Control lbl_validacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_validacion;
+
+        /// <summary>
+        /// Control rgl_solonumeros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rgl_solonumeros;
+
+        /// <summary>
         /// Control tbx_Estado.
         /// </summary>
         /// <remarks>

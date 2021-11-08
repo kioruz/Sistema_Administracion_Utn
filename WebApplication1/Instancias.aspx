@@ -177,6 +177,8 @@
                             </div>
                             <div class="label-error">
                                 <asp:RequiredFieldValidator ID="RFV_Anio" runat="server" ControlToValidate="tbx_Anio" ErrorMessage="Ingrese un Año" ValidationGroup="grupo2"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lbl_validacion" runat="server"></asp:Label>
+                                <asp:RegularExpressionValidator ID="rgl_solonumeros" runat="server" ControlToValidate="tbx_Anio" ErrorMessage="Ingrese numeros" ValidationExpression="\d+" ValidationGroup="grupo2"></asp:RegularExpressionValidator>
                             </div>
                             <div>
                                 <label for="tbx_Estado">Estado:</label>
