@@ -30,7 +30,7 @@ namespace WebApplication1
                 Usuarios user = usuario.login(username,pass);
                 if (user == null)
                 {
-                    lblUsuario.Text = "Ingreso una usuario o contraseña incorrecto.";
+                    lblUsuario.Text = "Ingreso un usuario o contraseña incorrecto.";
                     tbxPassword.Text = string.Empty;
                     tbxUser.Text = string.Empty;
                 }
